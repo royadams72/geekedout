@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+  background-color: #000;
+  color: #fff;
+
+}
+.margin100Top{
+  margin-top: 100px;
+}
+.row{
+  margin: 0
+}
+.preview img{
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+}
+
+.preview{
+  text-align: center;
+}
+.col-xs-6, .col-md-3{
+  padding:0;
+}
+.container-fluid{
+  padding: 0;
+  min-height: 500px
+}
+
+/**/
+.row.display-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.row .display-flex > [class*='col-'] {
+  flex-grow: 1;
+}
+
+.loader{
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  -ms-transform-origin: 50% 50%; /* IE 9 */
+  -webkit-transform-origin: 50% 50%; /* Chrome, Safari, Opera */
+  transform-origin: 50% 50%;
+  -webkit-animation:spin 1s linear infinite;
+   -moz-animation:spin 1s linear infinite;
+   animation:spin 1s linear infinite;
+}
+.loader-container{
+  text-align: center;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

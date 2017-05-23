@@ -1,0 +1,10 @@
+<div class="container-fluid preview margin100Top">
+<h2 *ngIf="!loading">Movies in Cinemas Now</h2>
+<app-loading *ngIf="loading" [loadingTitle]='catTitle'></app-loading>
+      <div *ngIf="!loading" class="row display-flex">
+        <div class="col-md-3 col-xs-6" *ngFor="let item of items">
+          <img src="{{config.base_url}}/w780/{{item.poster_path}}" class="img-responsive" alt="">
+            <h3>{{item.original_title | truncate : 15}}</h3>
+        </div>
+    </div>
+</div>

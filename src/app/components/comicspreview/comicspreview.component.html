@@ -1,0 +1,10 @@
+<div class="container-fluid preview">
+  <app-loading *ngIf="loading"  [loadingTitle]='catTitle'></app-loading>
+    <h2 *ngIf="!loading">Latest Comics</h2>
+      <div *ngIf="!loading" class="row display-flex">
+        <div class="col-md-3 col-xs-6" *ngFor="let item of items">
+          <img src="{{item.images[0].path}}/standard_fantastic.jpg" class="img-responsive" alt="">
+          <h3>{{item.title | truncate : 21}}</h3>
+        </div>
+    </div>
+</div>

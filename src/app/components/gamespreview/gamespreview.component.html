@@ -1,0 +1,11 @@
+<div class="container-fluid preview">
+  <app-loading *ngIf="loading"  [loadingTitle]='catTitle'></app-loading>
+<h2 *ngIf="!loading">Latest Games</h2>
+      <div *ngIf="!loading" class="row">
+        <div class="col-md-3 col-xs-6" *ngFor="let item of items">
+          <!--<img src="{{item.screenshots[0].url}}" class="" alt="">-->
+          <img src="https://images.igdb.com/igdb/image/upload/t_screenshot_big/{{item.cover.cloudinary_id}}.jpg" class="img-responsive" alt="">
+          <h3>{{item.name | truncate : 20}}</h3>
+        </div>
+    </div>
+</div>
