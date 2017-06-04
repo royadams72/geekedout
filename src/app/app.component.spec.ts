@@ -7,10 +7,8 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AppComponent,
-                      MockComponent({ selector: 'app-musicpreview' }),
-                      MockComponent({ selector: 'app-comicspreview' }),
-                      MockComponent({ selector: 'app-gamespreview' }),
-                      MockComponent({ selector: 'app-moviespreview' })]
+                      MockComponent({ selector: 'app-nav' }),
+                      MockComponent({ selector: 'app-home' })]
     }).compileComponents();
   }));
 

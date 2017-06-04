@@ -2,6 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MusicpreviewComponent } from './musicpreview.component';
 import { MusicService } from '../../services/music.service';
 import { HttpModule } from "@angular/http";
+import { LoadingComponent } from '../loading/loading.component';
+import { TruncatePipe } from 'angular2-truncate';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Observable } from "rxjs";
 describe('MusicpreviewComponent', () => {
   let component: MusicpreviewComponent;
@@ -9,9 +12,9 @@ describe('MusicpreviewComponent', () => {
   let musicService: MusicService;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MusicpreviewComponent ],
+      declarations: [ MusicpreviewComponent, LoadingComponent, TruncatePipe ],
       providers:[ MusicService ],
-      imports:[ HttpModule ]
+      imports:[ HttpModule, BrowserAnimationsModule ]
     })
     .compileComponents();
   }));

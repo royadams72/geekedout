@@ -17,7 +17,7 @@ export class GamesService {
                    .map((data) => {
                         //  console.log(data.json().data.data.results)
                           let result = data.json().data
-                          this.preview.push(...result)
+                          this.preview = result;
                           return this.preview;
                       })
                       .catch((error) => {

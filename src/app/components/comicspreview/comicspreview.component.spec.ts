@@ -1,10 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { By } from '@angular/platform-browser';
 import { ComicspreviewComponent } from './comicspreview.component';
 import { HttpModule } from "@angular/http";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 //import { MockService } from '../../../testing/mock.service';
 import { Observable } from "rxjs";
 import { ComicsService } from '../../services/comics.service';
+import { MockComponent } from '../../../testing/mock.component';
+import { TruncatePipe } from 'angular2-truncate';
+import { LoadingComponent } from '../loading/loading.component';
 
 describe('ComicspreviewComponent', () => {
   let component: ComicspreviewComponent;
@@ -15,9 +19,9 @@ describe('ComicspreviewComponent', () => {
   beforeEach(async(() => {
 
     TestBed.configureTestingModule({
-       declarations: [ ComicspreviewComponent ],
-       providers: [ComicsService ],
-       imports:[HttpModule]
+       declarations: [ ComicspreviewComponent, LoadingComponent, TruncatePipe],
+       providers: [ComicsService],
+       imports:[HttpModule, BrowserAnimationsModule]
     })
     .compileComponents();
   }));

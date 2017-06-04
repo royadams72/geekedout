@@ -1,0 +1,48 @@
+<div class="container details" [@containerState]="resize">
+  <app-loading *ngIf="loading"  [loadingTitle]='catTitle'></app-loading>
+    <div class="row">
+<div class="col-md-12">
+    <a class="btn btn-default" [routerLink]="['/movies']"><< Back to Movies</a>
+
+  </div>
+</div>
+      <div class="row" [@activeState]="isActive">
+        <div class="col-md-3 col-md-offset-1">
+          <div class="img-container" *ngIf="config[0]?.base_url">
+              <img src="{{config[0]?.base_url}}/w500/{{item[0]?.poster_path}}" class="img-responsive" alt="">
+          </div>
+
+          <!-- <h3 class="text-center" class='price' [@activeState]="isActive">Price: £{{(item | async)?.prices[0].price | number : '1.2-2'}} (Aprox)</h3> -->
+
+      </div>
+      <h2 class="col-md-7 text-left">{{item[0]?.title }}</h2>
+
+        <div class="col-md-7 text-left">
+          <h4>Realease Date: {{item[0]?.release_date | date}}</h4>
+          <div class="row">
+            <div class="col-md-6">
+
+                <ul>
+
+                  <li *ngFor="let genre of item[0]?.genres">
+                    {{genre.name}}
+                  </li>
+
+
+                </ul>
+
+            </div>
+
+        </div>
+        <p>
+            {{item[0]?.overview}}
+        </p>
+        <span *ngIf="item[0]?.imdb_id">
+        <a  href="http://www.imdb.com/title/{{item[0]?.imdb_id}}" target="_blank" class="btn btn-primary">IMDB Page</a>
+      </span>
+      <span *ngIf="item[0]?.homepage">
+      <a  href="{{item[0]?.homepage}}" target="_blank" class="btn btn-primary">Homepage</a>
+    </span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="container details" [@containerState]="resize">
+  <app-loading *ngIf="loading"  [loadingTitle]='catTitle'></app-loading>
+    <div class="row">
+<div class="col-md-12">
+    <a class="btn btn-default" [routerLink]="['/comics']"><< Back to Comics</a>
+
+  </div>
+</div>
+      <div class="row" [@activeState]="isActive">
+        <div class="col-md-3 col-md-offset-1">
+          <div class="img-container">
+              <img src="{{(item | async)?.images[0].path}}.{{(item | async)?.images[0].extension}}" class="img-responsive" alt="">
+          </div>
+
+          <h3 class="text-center" class='price' [@activeState]="isActive">Price: £{{(item | async)?.prices[0].price | number : '1.2-2'}} (Aprox)</h3>
+
+      </div>
+      <h2 class="col-md-7 text-left">{{(item  | async)?.title }}</h2>
+
+        <div class="col-md-7 text-left">
+          <div class="row">
+            <div class="col-md-6">
+
+                <ul>
+                <li>Published: {{(item | async)?.dates[0].date}}</li>
+                  <li *ngFor="let creator of (item | async)?.creators.items let i = index">
+                    {{creator.role | capitalize}}: {{creator.name}}
+                  </li>
+
+
+                </ul>
+
+            </div>
+
+        </div>
+        <p>
+            {{(item | async)?.description}}
+        </p>
+        <p *ngIf="(item | async)?.urls[1]">
+        <a  href="{{(item | async)?.urls[1].url}}" target="_blank" class="btn btn-primary">Buy</a>
+        </p>
+        </div>
+    </div>
+</div>

@@ -1,10 +1,10 @@
-<div class="container-fluid preview">
+<div class="container-fluid preview" [@containerState]="resize">
   <app-loading *ngIf="loading"  [loadingTitle]='catTitle'></app-loading>
-    <h2 *ngIf="!loading">Latest Albums</h2>
-      <div *ngIf="!loading" class="row">
+    <h2 [@activeState]="isActive">Latest Albums</h2>
+      <div class="row" [@activeState]="isActive" (@activeState.done)="catActive($event)">
         <div class="col-md-3 col-xs-6" *ngFor="let item of items">
           <img src="{{item.images[0].url}}" class="img-responsive" alt="">
-          <h3>{{item.name | truncate : 20}}</h3>
+          <h4>{{item.name | truncate : 20}}</h4>
         </div>
     </div>
 </div>

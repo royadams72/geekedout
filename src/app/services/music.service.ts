@@ -14,7 +14,7 @@ export class MusicService {
                    .map((data) => {
                          //console.log(data.json().data.albums.items)
                           let result = data.json().data.albums.items;
-                          this.preview.push(...result)
+                          this.preview = result;
                           return this.preview;
                       })
                       .catch((error) => {

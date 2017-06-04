@@ -10,7 +10,7 @@ export class LoadingComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.loadingTitle)
+    //console.log(this.loadingTitle)
   }
 
 }
