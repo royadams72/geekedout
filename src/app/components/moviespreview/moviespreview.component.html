@@ -1,12 +1,10 @@
-<div class="container-fluid preview containerTop" [@containerState]="resize">
-<app-loading *ngIf="loading" [loadingTitle]='catTitle' [@containerState]="resize"></app-loading>
-<h2 [@activeState]="isActive">Popular Movies in Cinemas Now</h2>
+<div class="container-fluid preview containerTop">
+<app-loading *ngIf="loading" [loadingTitle]='catTitle'></app-loading>
+<h2 [@titleState]="playTitle">Popular Movies in Cinemas Now</h2>
 <a [routerLink]="['/movies', '1']">
-      <div class="row display-flex" [@activeState]="isActive" (@activeState.done)="catActive($event)">
-        <div class="col-md-3 col-xs-6" *ngFor="let item of items">
-          <img src="{{config?.base_url}}/w780/{{item?.poster_path}}" class="img-responsive" alt="">
-            <h4>{{item?.original_title | truncate : 15}} </h4>
-
+      <div class="row" [@activeState]="isActive">
+        <div class="col-md-3 col-6" *ngFor="let item of items">
+          <img src="{{item?.poster_path}}" class="img-responsive" [lazyLoad]="item?.poster_path" alt="">
         </div>
     </div>
     </a>

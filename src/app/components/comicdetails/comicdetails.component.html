@@ -1,43 +1,38 @@
-<div class="container details" [@containerState]="resize">
+<div class="container details comics-details">
   <app-loading *ngIf="loading"  [loadingTitle]='catTitle'></app-loading>
     <div class="row">
-<div class="col-md-12">
-    <a class="btn btn-default" [routerLink]="['/comics']"><< Back to Comics</a>
+<div *ngIf="!loading" class="col-md-12">
+    <a class="btn" [routerLink]="['/comics']"><< Back to Comics</a>
 
   </div>
 </div>
       <div class="row" [@activeState]="isActive">
-        <div class="col-md-3 col-md-offset-1">
+        <div class="col-md-3 offset-md-1">
           <div class="img-container">
-              <img src="{{(item | async)?.images[0].path}}.{{(item | async)?.images[0].extension}}" class="img-responsive" alt="">
+              <img src="{{item?.images[0].path}}.{{item?.images[0].extension}}" class="img-fluid" alt="">
           </div>
 
-          <h3 class="text-center" class='price' [@activeState]="isActive">Price: £{{(item | async)?.prices[0].price | number : '1.2-2'}} (Aprox)</h3>
-
+          <h4 [@titleState]="playTitle" *ngIf="item?.prices[0].price !== null" class='price'>Price: £{{item?.prices[0].price | number : '1.2-2'}} (Aprox)</h4>
+          <h4 [@titleState]="playTitle" *ngIf="item?.prices[0].price === null" class='price'>No Price Available</h4>
       </div>
-      <h2 class="col-md-7 text-left">{{(item  | async)?.title }}</h2>
+
 
         <div class="col-md-7 text-left">
-          <div class="row">
-            <div class="col-md-6">
+          <h2 class="text-left">{{item?.title }}</h2>
 
+
+              <h4>Published: {{item?.dates[0].date}}</h4>
                 <ul>
-                <li>Published: {{(item | async)?.dates[0].date}}</li>
-                  <li *ngFor="let creator of (item | async)?.creators.items let i = index">
-                    {{creator.role | capitalize}}: {{creator.name}}
-                  </li>
 
-
+                <li *ngFor="let creator of item?.creators.items let i = index" class='capitalize listText'>
+                    <span class="listTitle">{{creator.role}}:</span> {{creator.name}}
+                </li>
                 </ul>
 
-            </div>
 
-        </div>
-        <p>
-            {{(item | async)?.description}}
-        </p>
-        <p *ngIf="(item | async)?.urls[1]">
-        <a  href="{{(item | async)?.urls[1].url}}" target="_blank" class="btn btn-primary">Buy</a>
+        <p>{{item?.description}}</p>
+        <p *ngIf="item?.urls[1]">
+        <a  href="{{item?.urls[1].url}}" target="_blank" class="btn marginTop30">Buy</a>
         </p>
         </div>
     </div>

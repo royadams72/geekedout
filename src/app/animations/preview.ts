@@ -7,7 +7,7 @@ export const ActiveTrigger = trigger('activeState', [
   })),
   state('active', style({
     'opacity': '1',
-    'display':'block',
+    'display':'flex',
     'transform': 'translateX(0)'
   })),
   transition('* => active', [ style({
@@ -18,12 +18,22 @@ export const ActiveTrigger = trigger('activeState', [
     animate('500ms ease-out')
   ])
 ]);
-export const containerTrigger = trigger('containerState', [
-  state('start', style({
-    'min-height': 'auto'
+export const TitleAnim = trigger('titleState', [
+  state('faded', style({
+    'opacity': '0',
+    'display':'none',
+    'transform': 'translateX(70px)'
   })),
-  transition('* => start', [
-
-    animate('500ms ease-out')
+  state('opaque', style({
+    'opacity': '1',
+    'display':'block',
+    'transform': 'translateX(0)'
+  })),
+  transition('* => opaque', [ style({
+    'opacity': '0',
+    'display':'none',
+    'transform': 'translateX(70px)'
+  }),
+    animate('700ms ease-out')
   ])
 ]);

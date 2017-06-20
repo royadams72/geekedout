@@ -1,11 +1,11 @@
-<div class="container-fluid preview" [@containerState]="resize">
+<div class="container-fluid preview">
   <app-loading *ngIf="loading"  [loadingTitle]='catTitle'></app-loading>
-    <h2 [@activeState]="isActive">Latest Games</h2>
-      <div class="row" [@activeState]="isActive" (@activeState.done)="catActive($event)">
-        <div class="col-md-3 col-xs-6" *ngFor="let item of items">
-          <!--<img src="{{item.screenshots[0].url}}" class="" alt="">-->
-          <img src="https://images.igdb.com/igdb/image/upload/t_screenshot_big/{{item.cover.cloudinary_id}}.jpg" class="img-responsive" alt="">
-          <h4>{{item.name | truncate : 20}}</h4>
+    <h2 [@titleState]="playTitle">Latest Games</h2>
+      <a [routerLink]="['games']">
+      <div class="row" [@activeState]="isActive">
+        <div class="col-md-2 col-6" *ngFor="let item of items">
+          <img src="{{item?.cover.cloudinary_id}}" [lazyLoad]="item?.cover.cloudinary_id" class="img-responsive" alt="">
         </div>
     </div>
+  </a>
 </div>

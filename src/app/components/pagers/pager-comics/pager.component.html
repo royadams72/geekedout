@@ -1,0 +1,11 @@
+<div class="row">
+  <nav aria-label="page through results" class='pagination-nav'>
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" [ngClass]="{'disabled': pageNum == 1}" (click)="prevPage()">Previous  </a></li>
+      <li *ngFor="let pageNumber of pageNumbers" (click)="getPage(pageNumber)" class="page-item"><a class="page-link">{{pageNumber}}</a></li>
+
+      <li class="page-item"><a class="page-link" (click)="nextPage()">Next</a></li>
+    </ul>
+  </nav>
+  <!-- <div (click)="prevPage()" class="col-6 prev">&lt;&lt;Previous Page</div><div class="col-6 next">  <a class="btn btn-default" (click)="nextPage()">Next Page&gt;&gt;</a></div> -->
+</div>

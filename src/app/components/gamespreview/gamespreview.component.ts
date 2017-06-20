@@ -1,29 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { GamesService } from '../../services/games.service';
-import {ActiveTrigger, containerTrigger} from '../../animations/preview';
+import {ActiveTrigger, TitleAnim} from '../../animations/preview';
 import { AnimationEvent } from '@angular/animations';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 @Component({
   selector: 'app-gamespreview',
   templateUrl: './gamespreview.component.html',
   styleUrls: ['./gamespreview.component.css'],
-  animations: [ActiveTrigger, containerTrigger]
+  animations: [ActiveTrigger, TitleAnim]
 })
 export class GamespreviewComponent implements OnInit {
   public catTitle = 'Loading Games content';
   public loading: boolean = true;
   public items:Array<any> = [];
   public isActive:string = 'inActive';
-  public resize:string = 'inActive';
+  public playTitle:string = 'faded';
     constructor(private gamesService: GamesService) { }
 
     ngOnInit(){
-      this.gamesService.getPreview().subscribe((data)=>{
+      this.gamesService.getItems(6).subscribe((data)=>{
         this.items = data;
-
+        this.items = this.items.map(data=>{
+          if(data.cover.cloudinary_id !== undefined){
+              data.cover.cloudinary_id = 'https://images.igdb.com/igdb/image/upload/t_cover_big/'+data.cover.cloudinary_id+'.jpg'
+          }
+          return data;
+          })
         setTimeout(()=>{
           this.loading = false;
           this.isActive = 'active';
-
+          this.playTitle = 'opaque';
         }, 400)
       },err => {
         this.loading = false;
@@ -34,7 +40,7 @@ export class GamespreviewComponent implements OnInit {
       if(event.fromState != 'void'){
         return
       }
-       this.resize = 'start';
+
       //console.log(event)
 
     }

@@ -19,11 +19,12 @@ var toHash = ts+process.env.COMICS_PRIVATE_APIKEY+process.env.COMICS_PUBLIC_APIK
 hash.update(toHash);
 
 //
-router.get('/preview/:limit', function (req, res, next) {
+router.get('/preview/:limit/:offset', function (req, res, next) {
   let limit = req.params.limit;
-  //console.log(req.params.limit)
+	let offset = req.params.offset;
+
   var options = {
-    url:'http://gateway.marvel.com/v1/public/comics?dateDescriptor=thisWeek&limit='+limit+'&ts='+ts+'&apikey='+process.env.COMICS_PUBLIC_APIKEY+'&hash='+hash.hex()
+    url:'http://gateway.marvel.com/v1/public/comics?dateDescriptor=thisWeek&offset='+offset+'&limit='+limit+'&ts='+ts+'&apikey='+process.env.COMICS_PUBLIC_APIKEY+'&hash='+hash.hex()
   }
 
    request(options, function (err, response, body) {
@@ -90,11 +91,30 @@ router.get('/details/:id', function (req, res, next) {
 
 })
 
+router.get('/search/:query', function (req, res, next) {
+	let q = req.params.query;
+	let str = q.slice(0, 3)
+	let query = encodeURIComponent(str)
 
-      /*? access_key = YOUR_ACCESS_KEY
-      & from = USD
-      & to = GBP
-      & amount = 10  */
-      // JSON.parse(body).data.results[0].prices[0].price = amount;
+  console.log(query)
+  var options = {
+    url:'http://gateway.marvel.com/v1/public/comics?titleStartsWith='+query+'&ts='+ts+'&apikey='+process.env.COMICS_PUBLIC_APIKEY+'&hash='+hash.hex()
+  }
+
+   request(options, function (err, response, body) {
+
+     if(err){
+       return res.status(500).json({
+         title: 'An error has occured',
+         error: err
+       })
+     }
+		 //console.log(body)
+		   res.json({data: JSON.parse(body)});
+
+    })
+
+})
+
 
 module.exports = router;

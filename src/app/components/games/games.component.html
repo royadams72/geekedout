@@ -1,3 +1,13 @@
-<p>
-  games works!
-</p>
+<div class="container-fluid games">
+  <app-loading *ngIf="loading"  [loadingTitle]='catTitle'></app-loading>
+    <h2 [@titleState]="playTitle">Latest Games</h2>
+
+      <div class="row" [@activeState]="isActive">
+        <div class="col-md-2 col-6" *ngFor="let item of items">
+            <a [routerLink]="['/games-details', item?.id]">
+          <img *ngIf="item.cover?.cloudinary_id" src="{{item?.cover.cloudinary_id}}" [lazyLoad]="item?.cover.cloudinary_id" class="img-fluid" alt="">
+            </a>
+        </div>
+    </div>
+
+</div>

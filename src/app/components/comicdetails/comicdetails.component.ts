@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { ComicsService } from '../../services/comics.service';
-import {ActiveTrigger, containerTrigger} from '../../animations/preview';
-
-import {CapitalizePipe} from "../../utils/pipes/capitalise.pipe";
+import {ActiveTrigger, TitleAnim} from '../../animations/preview';
 import 'rxjs/add/operator/share';
 import 'rxjs';
 @Component({
   selector: 'app-comicdetails',
   templateUrl: './comicdetails.component.html',
   styleUrls: ['./comicdetails.component.css'],
-  animations: [ActiveTrigger, containerTrigger]
+  animations: [ActiveTrigger, TitleAnim]
 
 })
 export class ComicdetailsComponent implements OnInit {
@@ -18,16 +16,26 @@ export class ComicdetailsComponent implements OnInit {
   public loading: boolean = true;
   public catTitle = 'Loading Comic';
   public isActive:string = 'inActive';
-  public counter:number;
-  constructor(private activatedRoute: ActivatedRoute, private comicsService: ComicsService) { }
+  public playTitle:string = 'faded';
+  constructor(private activatedRoute: ActivatedRoute,
+              private comicsService: ComicsService) { }
 
   ngOnInit() {
-    let id = this.activatedRoute.snapshot.params.id;
-    this.item = this.comicsService.getItem(id).share();
-    setTimeout(()=>{
-      this.isActive = 'active';
-      this.loading = false;
-    }, 700)
-
+    this.activatedRoute.params
+    .flatMap((value:Params, index:number)=>{
+      return  this.comicsService.getItem(value['id']);
+    })
+    .subscribe((data)=>{
+      this.item = data;
+      console.log(data)
+      setTimeout(()=>{
+        this.isActive = 'active';
+        this.playTitle = 'opaque'
+        this.loading = false;
+      }, 700)
+    })
   }
+
+
+
 }

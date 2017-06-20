@@ -1,13 +1,16 @@
-<div class="container-fluid preview comics containerTop" [@containerState]="resize">
+<div class="container-fluid comics">
   <app-loading *ngIf="loading"  [loadingTitle]='catTitle'></app-loading>
-    <h2 [@activeState]="isActive">Latest Comics</h2>
+    <h2 [@titleState]="playTitle">Latest Comics</h2>
+
       <div class="row" [@activeState]="isActive">
-        <div class="col-md-2 col-sm-4 col-xs-6 display-flex" *ngFor="let item of items">
 
+        <div class="col-md-2 col-4" *ngFor="let item of items">
         <a [routerLink]="['/comic-details', item.id]">
-          <img src="{{item.images[0].path}}/standard_fantastic.jpg" class="img-responsive" alt="">
 
-          <h4>{{item.title | truncate : 14}}</h4>
+          <img *ngIf="item.images[0]?.path" src="{{item.images[0]?.path}}" class="img-fluid" [lazyLoad]="item.images[0]?.path" alt="">
+          <div *ngIf="!item.images[0]?.path" class="">
+            sadasdsadasdasd
+          </div>
           </a>
         </div>
     </div>

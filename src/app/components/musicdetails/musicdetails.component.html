@@ -1,0 +1,37 @@
+<div class="container details music-details">
+  <app-loading *ngIf="loading"  [loadingTitle]='catTitle'></app-loading>
+  <div class="row">
+    <div class="col-md-12">
+      <a class="btn" *ngIf="!loading" [routerLink]="['/music']"><< Back to Music</a>
+    </div>
+  </div>
+  <div class="row" [@activeState]="isActive">
+      <div class="col-md-4 offset-md-1 img-container" style='display:block' *ngIf="item[0]?.images[0].url">
+      <a href="{{item[0].external_urls.spotify}}" target="_blank">
+        <img src="{{item[0]?.images[0].url}}" class="img-fluid" alt="{{item[0]?.name}} image">
+      </a>
+      </div>
+      <div class="col-md-7 text-left">
+        <h2 class="text-left">{{item[0]?.name}}</h2>
+        <h4 *ngFor="let artist of item[0]?.artists"><a href="{{item[0]?.external_urls.spotify}}" target="_blank">{{artist.name}}</a></h4>
+        <p>Realease Date: {{item[0]?.release_date | date}}</p>
+          <h4>TrackList</h4>
+      <div class="row">
+
+        <div class="col-md-12">
+
+          <ol>
+            <li *ngFor="let track of item[0]?.tracks.items" class="ol-text">
+              <span class="body-color">{{track.name}}</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <span *ngIf="item[0]?.external_urls.spotify">
+            <a  href="{{item[0]?.external_urls.spotify}}" target="_blank" class="btn marginTop30">Spotify Page</a>
+        </span>
+
+      </div>
+  </div>
+</div>

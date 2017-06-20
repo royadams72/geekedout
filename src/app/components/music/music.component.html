@@ -1,3 +1,14 @@
-<p>
-  music works!
-</p>
+<div class="container-fluid music">
+  <app-loading *ngIf="loading"  [loadingTitle]='catTitle'></app-loading>
+    <h2 [@titleState]="playTitle">Latest Releases</h2>
+
+      <div class="row" [@activeState]="isActive">
+
+        <div class="col-md-3 col-sm-4 col-6" *ngFor="let item of items">
+        <a [routerLink]="['/music-details', item.id]">
+          
+        <img src="{{item.images[0].url}}" class="img-fluid" [lazyLoad]="item.images[0]?.url" alt="">
+          </a>
+        </div>
+    </div>
+</div>

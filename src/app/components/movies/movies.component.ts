@@ -1,59 +1,55 @@
-import { Component, OnInit, ElementRef, ViewChildren, ViewChild, Renderer2} from '@angular/core';
+
+import { Component, OnInit } from '@angular/core';
+// import { PagerComponent } from '../pagers/pager-movies/pager.component';
 import { MoviesService } from '../../services/movies.service';
-import {ActiveTrigger, containerTrigger} from '../../animations/preview';
+import {ActiveTrigger, TitleAnim } from '../../animations/preview';
 import { AnimationEvent } from '@angular/animations';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.css'],
-  animations: [ActiveTrigger, containerTrigger]
+  animations: [ActiveTrigger, TitleAnim ]
 })
 export class MoviesComponent implements OnInit {
   public items:Array<any> = [];
   public config:any;
   public divHeights:Array<any> = [];
-  public loading: boolean = true;
-  public catTitle = 'Movie Cinema content';
-  public isActive:string = 'inActive';
-  public pageNum:number;
-  public timeOut = null;
-  @ViewChild('parentDiv') parentDiv: ElementRef
+  public loading: boolean;
+  public catTitle:string;
+  public isActive:string;
+  public playTitle:string = 'faded';
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
-              private moviesService: MoviesService,
-              private renderer: Renderer2) {}
+              private moviesService: MoviesService) {}
 
   ngOnInit() {
-    console.log(this.timeOut)
-  this.renderer.listen('window', 'resize', (evt) => {
-    if (this.timeOut != null){
-      //console.log(this.timeOut)
-       clearTimeout(this.timeOut);
-     }
-  this.timeOut = setTimeout(()=>{
-  //  console.log(this.timeOut)
-      // this.setHeight(this.parentDiv)
-     }, 100)
+  //let el = this.element.nativeElement;
 
-  })
     this.activatedRoute.params
     .flatMap((params:Params, index:number)=>{
-      this.pageNum = params['pageNum']
-      //console.log(this.pageNum)
+      this.loadPage();
+
       return this.moviesService.getMovie('showAll', params['pageNum'])
     })
 
     .subscribe((data)=>{
         if(data){
           this.config = JSON.parse(localStorage.getItem('configuration'));
-          this.items = data;
+          this.items = data.results;
+            console.log(this.config)
+          this.items = this.items.map(data=>{
+            if(data.poster_path !== undefined){
+                data.poster_path = this.config.base_url+'w500'+data.poster_path;
+            }
+            return data;
+            })
 
+        //  this.total_pages =  data.total_pages;
           setTimeout(()=>{
-            this.isActive = 'active';
-            this.loading = false;
-            //  console.log(this.parentDiv.nativeElement.children[0].offsetHeight);
-
+          this.playTitle = 'opaque';
+          this.isActive = 'active';
+          this.loading = false;
           }, 800)
         }
     },err => {
@@ -65,41 +61,10 @@ export class MoviesComponent implements OnInit {
 
   }
 
-ngAfterViewInit(){
-  setTimeout(()=>{
-    //this.setHeight(this.parentDiv)
-  },1800)
-}
-public setHeight(el){
-  //console.log(this.parentDiv.nativeElement.children.offsetHeight);
-  this.divHeights = []
-  let maxHeight:number;
-  console.log(el.nativeElement.children[0])
-  let divChildren = el.nativeElement.children
-    for (let i = 0; i < divChildren.length; i++){
-      let divHeights = divChildren[i].clientHeight
-      this.divHeights.push(divHeights);
-        //console.log(this.divHeights);
-    }
-    maxHeight = Math.max( ...this.divHeights )
 
-
-    for (let i = 0; i < divChildren.length; i++){
-    this.renderer.setStyle(divChildren[i], 'min-height', maxHeight+"px")
-    }
-}
-
-
-
-
-  public nextPage(){
-    this.pageNum++;
-    this.router.navigate(['/movies', this.pageNum]);
+  public loadPage(){
+    this.loading = true;
+    this.catTitle = 'Loading Movie content';
+    this.isActive= 'inActive';
   }
-
-  public prevPage(){
-    this.pageNum--;
-  }
-
-
 }

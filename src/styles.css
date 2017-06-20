@@ -1,21 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+/*@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.css";*/
 body{
-  background-color: #000;
-  color: #fff;
+ background-color: #232323;
+ color: #fff;
+ font-family: Tahoma;
+ letter-spacing: 1px;
+ font-weight: normal;
+ font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
 
 }
+
 body a:link, body a:visited, body a:hover, body a:active{
   color:#fff;
   text-decoration: none;
+
 }
 body a:hover{
 text-decoration: underline;
 }
+
+
 h2{
-  margin-top: 30px
+  margin-top: 30px;
+
 }
+
 h4{
-  color: #999;
+  font-size: 1rem
+}
+.body-color{
+  color: #fff;
+}
+.hidden{
+  display: none;
+  visibility: hidden;
 }
 /*Buttons*/
 .btn-default{
@@ -32,20 +55,9 @@ h4{
   margin-top: 50px;
 }
 .containerTop{
-  margin-top: 50px;
+  margin-top: 100px;
   }
-.prev, .next{
-  font-size: 20px;
-  margin-bottom:20px;
-}
-.prev{
-  padding-left: 20px!important;
- text-align: left;
-}
-.next{
-  padding-right: 20px!important;
- text-align: right;
-}
+
 .row{
   margin: 0
 }
@@ -58,25 +70,31 @@ h4{
 .preview{
   text-align: center;
 }
-/*.col-xs-6, .col-md-3, .col-xs-4{
-  padding:0;
-}*/
+
 [class*='col-'] {
     padding:0;
 }
 .container-fluid{
   padding: 0;
-  min-height: 1000px
 }
-
+/*NAVBAR*/
+.navbar img{
+  width: 50%;
+  height: auto;
+}
+.navbar{
+  padding: 0;
+  background-color: #232323!important;
+}
+.logo{
+  margin: 0
+}
+.collapse, .navbar-collapse {
+  position: absolute;
+  right: 40px;
+  width:auto!important;
+  }
 /**/
-.row.display-flex {
-  display: flex;
-  flex-wrap: wrap;
-}
-.row .display-flex > [class*='col-'] {
-  flex-grow: 1 ;
-}
 
 .loader{
   width: 50px;
@@ -86,8 +104,8 @@ h4{
   -webkit-transform-origin: 50% 50%; /* Chrome, Safari, Opera */
   transform-origin: 50% 50%;
   -webkit-animation:spin 1s linear infinite;
-   -moz-animation:spin 1s linear infinite;
-   animation:spin 1s linear infinite;
+  -moz-animation:spin 1s linear infinite;
+  animation:spin 1s linear infinite;
 }
 .loader img{
   width: 100%;
@@ -96,84 +114,180 @@ h4{
 }
 .loader-container{
   text-align: center;
-  min-height: 1000px
+  height: 600px;
+  width: 100%
 }
-/*COMICS*/
+/*PAGES*/
+.games, .comics, .search, .music, .movies{
+  margin-top: 100px;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
 
-.comics h4 {
-  margin: 10px 0 40px 0
+.games img, .comics img, .music img,  .movies img{
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
 }
+
+/*COMICS*/
+.comics h1, .comics h2{
+  color:#F5E653;
+}
+
+/*END COMICS*/
+
+/*MOVIES*/
+.movies h1, .movies h2{
+  color:#68C39F;
+}
+/*END MOVIES*/
+
+/*GAMES*/
+.games h1, .games h2{
+  color:#EB5055;
+}
+/*END GAMES*/
+
+/*MUSIC*/
+.music h1, .music h2{
+  color:#F969D0;
+}
+/*END GAMES*/
 
 /*Details Pages*/
-.details{
-  margin-top: 70px;
+.listTitle , .listText, .ol-text{
+  color: #fff;
+  list-style-type: none;
+  font-size: .8rem
 }
+.ol-text{
+  list-style-type: inherit;
+  color: #F969D0;
+}
+.btn{
+  border: 1px solid #fff;
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0;
+  -moz-transition: none;
+  -webkit-transition: none;
+  -o-transition: color 0 ease-in;
+  transition: none;
+}
+.movies-details h1,  .movies-details h2{
+  color:#68C39F;
+}
+.movies-details .listTitle{
+ color:#68C39F;
+ float: left;
+}
+.movies-details a:hover{
+  color:#68C39F;
+  border-color: #68C39F;
+}
+/*Comics*/
+.comics-details h1,  .comics-details h2{
+  color:#F5E653;
+}
+
+.comics-details a:hover{
+  color:#F5E653;
+  border-color: #F5E653;
+}
+.comics-details .listTitle{
+  color:#F5E653;
+}
+/*Music*/
+.music-details h1,  .music-details h2{
+  color:#F969D0;
+}
+
+.music-details a:hover{
+  color:#F969D0;
+  border-color: #F969D0;
+}
+.music-details .listTitle{
+  color:#F969D0;
+}
+
+/*Games*/
+.games-details h1,  .games-details h2{
+  color:#EB5055;
+}
+
+.games-details a:hover{
+  color:#EB5055;
+  border-color: #EB5055;
+}
+.games-details .listText{
+  float: left;
+}
+
+.games-details .listTitle{
+ color:#EB5055;
+}
+
+.details  ul {
+  padding:  0!important
+}
+.details{
+  margin-top: 100px;
+}
+
 .details [class*='col-'] {
     padding-right: 15px;
     padding-left: 15px;
 }
+
 .details img {
   margin-top: 30px
 }
-.details ul{
+
+.details ul, .details ol{
   padding-left: 0;
+  margin-bottom: 0rem;
 }
+
+.details p{
+  margin-top: .5rem;
+  margin-bottom: 0rem;
+}
+
 .price{
   text-align: center;
+  margin-top: 20px;
 }
+
 .img-container{
-min-height: 390px
+min-height: 390px;
+text-align: right;
 }
+
 .hideUl{
   min-height: 150px;
   overflow: hidden;
 }
+.listTitle{
+  color: #ccc;
+  list-style-type: none;
+  font-size: .8rem
+
+}
+.capitalize{
+text-transform:capitalize
+}
+
+
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 
-/*
-@media screen and (max-width: 2000px) and (min-width: 1700px){
-  .item{
-  min-height:780px;
 
+@media (max-width: 770px){
+  .img-container{
+  text-align: center;
   }
 }
-@media screen and (max-width: 1700px) and (min-width: 1500px){
-  .item{
-  min-height:640px;
-
-  }
-}
-
-@media screen and (max-width: 1500px) and (min-width: 1400px){
-  .item{
-  min-height:580px;
-
-  }
-}
-@media screen and (max-width: 1400px) and (min-width: 1300px){
-  .item{
-  min-height:540px;
-
-  }
-}
-@media screen and (max-width: 1300px) and (min-width: 1200px){
-  .item{
-  min-height:500px;
-
-  }
-}
-@media screen and (max-width: 1200px) and (min-width: 800px){
-  .item{
-  min-height:500px;
-
-  }
-}
-@media screen and (max-width: 800px) and (min-width: 600px){
-  .item{
-  min-height:400px;
-
-  }
-}*/

@@ -1,12 +1,12 @@
 import { Component, ViewChild, ElementRef, Renderer2} from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
-import {ActiveTrigger, containerTrigger} from '../../animations/preview';
+import {ActiveTrigger, TitleAnim} from '../../animations/preview';
 import { AnimationEvent } from '@angular/animations';
 @Component({
   selector: 'app-moviespreview',
   templateUrl: './moviespreview.component.html',
   styleUrls: ['./moviespreview.component.css'],
-  animations: [ActiveTrigger, containerTrigger]
+  animations: [ActiveTrigger, TitleAnim]
 })
 export class MoviespreviewComponent{
   public items:Array<any> = [];
@@ -14,7 +14,7 @@ export class MoviespreviewComponent{
   public loading: boolean = true;
   public catTitle = 'Movie Cinema content';
   public isActive:string = 'inActive';
-  public resize:string = 'inActive';
+  public playTitle:string = 'faded';
 
 
   constructor(private moviesService: MoviesService) {
@@ -29,8 +29,16 @@ export class MoviespreviewComponent{
           this.config = JSON.parse(localStorage.getItem('configuration'));
           //console.log(this.config);
           this.items = data;
+          this.items = this.items.map(data=>{
+            if(data.poster_path !== undefined){
+                data.poster_path = this.config.base_url+'w780'+data.poster_path;
+                  // console.log(data.poster_path)
+            }
+            return data;
+            })
           setTimeout(()=>{
             this.isActive = 'active';
+            this.playTitle = 'opaque';
             this.loading = false;
           }, 200)
         }
@@ -40,14 +48,7 @@ export class MoviespreviewComponent{
       }
     )
   }
- public catActive(event:AnimationEvent ){
-   if(event.fromState != 'void'){
-     return
-   }
-    this.resize = 'start';
-  // console.log(event)
 
- }
 
 
 }
