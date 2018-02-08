@@ -1,10 +1,10 @@
 <div class="container-fluid preview containerTop">
-<app-loading *ngIf="loading" [loadingTitle]='catTitle'></app-loading>
+<app-loading [@loaderState]="showloader" [loadingTitle]='catTitle'></app-loading>
 <h2 [@titleState]="playTitle">Popular Movies in Cinemas Now</h2>
-<a [routerLink]="['/movies', '1']">
+<a [routerLink]="['/movies']">
       <div class="row" [@activeState]="isActive">
         <div class="col-md-3 col-6" *ngFor="let item of items">
-          <img src="{{item?.poster_path}}" class="img-responsive" [lazyLoad]="item?.poster_path" alt="">
+          <img src="/assets/defaultImage.png" class="img-responsive" [lazyLoad]="item?.poster_path" alt="">
         </div>
     </div>
     </a>

@@ -5,16 +5,16 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/switchMap';
+// import 'rxjs/add/operator/switchMap';
 
 @Injectable()
 export class SearchService {
-  private url = "http://localhost:3000";
+  private url = "https://geeked-out.herokuapp.com";
   private searchResults:Array<any> = [];
   constructor(private http: Http) { }
 
   public search(query: Observable<string>){
-    return query.debounceTime(400)
+    return query.debounceTime(300)
     .distinctUntilChanged()
     .filter(query => query.length > 0 && query.replace(/\s+/g, '') !== '' )
     .switchMap(

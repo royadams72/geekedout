@@ -22,9 +22,12 @@ public playTitle:string = 'faded';
     this.comicsService.getPreview(6).subscribe((data)=>{
       this.items = data[0].results;
       this.items = this.items.map(data=>{
+        //  console.log(data.images[0])
         if(data.images[0] !== undefined){
             data.images[0].path = data.images[0].path+'/standard_fantastic.jpg'
-              // console.÷log(data.images[0].path)
+              //
+        }else{
+          data.images[0] = {path:  "/assets/image404@2x.png"}
         }
         return data;
         })

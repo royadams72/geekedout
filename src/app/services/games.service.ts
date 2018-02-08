@@ -6,8 +6,9 @@ import 'rxjs';
 @Injectable()
 export class GamesService {
 
-  private url = "http://localhost:3000";
+  private url = "https://geeked-out.herokuapp.com";
   public items:Array<any> = [];
+  public item:Array<any> = [];
   public enumElements = [['genres'], ['player_perspectives'], ['game_modes'], ['themes']]//elements that are returned from API as numbers
   public enumList:Array<any> = [];//List downloaded via API to match to enumElements
 
@@ -43,7 +44,7 @@ public getItem(id:number): Observable<any>{
         return this.http.get(this.url+'/games/getfields', options)
            .mergeMap((data) => {
                 this.elapsedTime.setItems('enumList', JSON.stringify(data.json()));
-                console.log(data.json())
+                // console.log(data.json())
                 return this.getInfo(id);
             })
             .catch((error) => {
@@ -52,6 +53,7 @@ public getItem(id:number): Observable<any>{
           }
           else{
             console.log("EnumList already set")
+
             return this.getInfo(id);
       }
     //
@@ -68,6 +70,7 @@ public getInfo(id:number): Observable<any>{
              let result = data.json().data;
              this.items = result;
               this.setNumbers();
+                  // console.log(this.items)
              return this.items;
          })
          .catch((error) => {
@@ -80,21 +83,25 @@ public getInfo(id:number): Observable<any>{
 
 public setNumbers(){
 //  console.log(this.enumList)
+
    this.enumElements = this.enumElements
      .filter((arr)=> {
        //get the object values where equal to element value
        if(this.items[0][arr[0]] == undefined){
+        //  console.log(this.items[0])
          return false;
        }
        return true;
      })
       .map( arr => {
+        console.log(this.enumElements)
        // console.log(this.items[0][arr[0]])
        return arr.concat(this.items[0][arr[0]])
       })
   this.matchFields()
 }
   public matchFields(){
+
     //Replaces numbers in o
     this.enumElements = this.enumElements.map( arr =>{
          return [arr[0]].concat(arr.slice(1).map( val =>{
@@ -109,12 +116,13 @@ public setNumbers(){
    this.cleanUpArray(this.enumElements);
   }
 public getList(){
+console.log(this.enumElements)
   return this.enumElements
 }
   public cleanUpArray(arr){
       return arr.map(ar => {
         if(ar[0].indexOf("_")) {
-          console.log('found')
+          // console.log('found')
         ar[0] = ar[0].replace('_', ' ')
       }
         for(var i = 0; i < ar.length; i++){

@@ -1,39 +1,44 @@
-<div class="container details games-details" #container>
+<div class="container details games-details" >
   <app-loading *ngIf="loading"  [loadingTitle]='catTitle'></app-loading>
   <div class="row">
-    <div class="col-md-12">
-      <a class="btn" *ngIf="!loading" [routerLink]="['/games']"><< Back to Games</a>
+    <div class="col-md-12" *ngIf="!loading">
+      <a class="btn" *ngIf="searchStr === undefined" [routerLink]="['/games']"><< Back to Games</a>
+      <a *ngIf="searchStr !== undefined" class="btn" [routerLink]="['/search', searchStr]"><< Back to Search Results</a>
     </div>
   </div>
-  <div class="row" [@activeState]="isActive">
+  <div class="row" [@detailsState]="isActive">
 
-      <div class="col-md-4 offset-md-1 img-container" style='display:block' *ngIf="item[0]?.cover.cloudinary_id">
-        <img *ngIf="item[0].cover?.cloudinary_id" src="https://images.igdb.com/igdb/image/upload/t_cover_big/{{item[0].cover?.cloudinary_id}}.jpg" class="img-fluid" alt="">
+      <div class="col-md-4 offset-md-1 img-container" style='display:block'>
+        <img *ngIf="url" src="/assets/defaultImage.png" [lazyLoad]="url" class="img-fluid" alt="">
       </div>
       <div class="col-md-7 text-left">
         <h2 class="text-left">{{item[0]?.name}}</h2>
-        <!-- <h4 *ngFor="let artist of item[0]?.artists"><a href="{{item[0]?.external_urls.spotify}}" target="_blank">{{artist.name}}</a></h4> -->
-        <p>Realease Date: {{item[0]?.release_dates[0].date | date}}</p>
+
+        <p>Realease Date: {{item[0]?.release_dates[0]?.date | date}}</p>
             <div class="row">
+
                 <ul class='col-md-12' *ngFor="let items of enumElements">
                   <li *ngFor="let item of items; let i = index; let isLast = last" class="capitalize listText">
                   <span [ngClass]="{listTitle : i === 0 }">{{item}}{{i ===0 ? ':&nbsp;' : !isLast ? ',&nbsp;' : '' }}</span>
                   </li>
                 </ul>
+
                 <div class="row">
                   <p>{{item[0]?.summary}}</p>
                 </div>
-                <p *ngIf="item[0]?.videos.length > 0" class="listTitle">Videos</p>
-                <ul class='col-md-12' *ngIf="item[0]?.videos.length > 0">
+                <p *ngIf="item[0]?.videos?.length > 0" class="listTitle">Videos</p>
+                <ul class='col-md-12' *ngIf="item[0]?.videos?.length > 0">
                   <li *ngFor="let video of item[0]?.videos; let isLast = last" class="listText">
                     <a href="http://www.youtube.com/watch?v={{video.video_id}}" target="_blank">{{video.name}}{{isLast ? '' : ',&nbsp;' }}</a>
                   </li>
                 </ul>
-                  <div *ngIf="item[0]?.url" class="col-md-12">
+
                   <a href="{{item[0]?.url}}" target="_blank" class="btn marginTop30">More</a>
-                  </div>
+
             </div>
 
       </div>
   </div>
+</div>
+<div class="bImage" #bgContainer>
 </div>

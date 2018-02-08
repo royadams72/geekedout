@@ -2,16 +2,15 @@
   <app-loading *ngIf="loading"  [loadingTitle]='catTitle'></app-loading>
     <div class="row">
 <div *ngIf="!loading" class="col-md-12">
-    <a class="btn" [routerLink]="['/comics']"><< Back to Comics</a>
-
+    <a *ngIf="searchStr === undefined" class="btn" [routerLink]="['/comics']"><< Back to Comics</a>
+    <a *ngIf="searchStr !== undefined" class="btn" [routerLink]="['/search', searchStr]"><< Back to Search Results</a>
   </div>
 </div>
-      <div class="row" [@activeState]="isActive">
+      <div class="row" [@detailsState]="isActive">
         <div class="col-md-3 offset-md-1">
           <div class="img-container">
-              <img src="{{item?.images[0].path}}.{{item?.images[0].extension}}" class="img-fluid" alt="">
+            <img *ngIf="url"  src="/assets/defaultImage.png" [lazyLoad]="url" class="img-fluid" alt="">
           </div>
-
           <h4 [@titleState]="playTitle" *ngIf="item?.prices[0].price !== null" class='price'>Price: £{{item?.prices[0].price | number : '1.2-2'}} (Aprox)</h4>
           <h4 [@titleState]="playTitle" *ngIf="item?.prices[0].price === null" class='price'>No Price Available</h4>
       </div>
@@ -36,4 +35,6 @@
         </p>
         </div>
     </div>
+</div>
+<div class="bImage" #bgContainer>
 </div>

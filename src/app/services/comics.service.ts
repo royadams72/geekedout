@@ -4,7 +4,7 @@ import { formatDate } from '../utils/formatDate';
 import { Observable } from "rxjs";
 @Injectable()
 export class ComicsService {
-  private url = "http://localhost:3000";
+  private url = "https://geeked-out.herokuapp.com";
   public preview:Array<any>;
   public item:any;
 
@@ -32,12 +32,10 @@ export class ComicsService {
                     return this.http.get(this.url+'/comics/details/'+id, options)
                            .map((data) => {
                                   let result = data.json().data.data.results[0]
-
                                   let d = new Date(result.dates[0].date)
                                   let date = formatDate(d);
                                   //this.creators = item.creators.items
                                   this.item = result;
-
                                   this.item.prices[0].price = data.json().ukprice
                                   this.item.dates[0].date = date;
                                   return this.item;

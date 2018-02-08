@@ -1,27 +1,42 @@
-    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
-         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-           <span class="navbar-toggler-icon"></span>
-         </button>
-         <a class="navbar-brand"  [routerLink]="['']" ><img src="/assets/nav/logo@2x.png" class='logo' alt="Geeked Out"></a>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+  <div  style="width:100%!important">
 
-         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-           <ul class="navbar-nav mr-auto">
-             <li class="nav-item" routerLinkActive="'active'">
-               <a class="nav-link" [routerLink]="['/movies']"><img src="/assets/nav/movies@2x.png" class='logo' alt="Movies"></a>
-             </li>
-             <li class="nav-item" routerLinkActive="'active'">
-               <a class="nav-link" [routerLink]="['/comics']"><img src="/assets/nav/comics@2x.png" class='logo' alt="Comics"></a>
-             </li>
-              <li class="nav-item" routerLinkActive="'active'">
-              <a class="nav-link" [routerLink]="['/music']"><img src="/assets/nav/music@2x.png" class='logo' alt="Music"></a>
-              </li>
-              <li class="nav-item" routerLinkActive="'active'">
-                <a class="nav-link" [routerLink]="['/games']"><img src="/assets/nav/games@2x.png" class='logo' alt="Games"></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/search']"><img src="/assets/nav/search@2x.png" class='logo' alt="Search"></a>
-              </li>
-           </ul>
 
-         </div>
-       </nav>
+  <div class="row" >
+
+<div class="col-6">
+   <a class="navbar-brand"  [routerLink]="['']" ><img src="/assets/nav/logo@2x.png" class='logo' alt="Geeked Out"></a>
+</div>
+
+
+     <div class="col-6">
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+       </button>
+
+     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+       <ul class="navbar-nav mr-auto">
+         <li class="nav-item" routerLinkActive="'active'">
+           <a [attr.data-target]="dataTarget" [attr.data-toggle]="dataToggle" class="nav-link" [routerLink]="['/movies']"><img src="/assets/nav/movies@2x.png"  alt="Movies"></a>
+         </li>
+         <li class="nav-item" routerLinkActive="'active'">
+           <a [attr.data-target]="dataTarget" [attr.data-toggle]="dataToggle" class="nav-link" [routerLink]="['/comics']"><img src="/assets/nav/comics@2x.png"  alt="Comics"></a>
+         </li>
+          <li class="nav-item" routerLinkActive="'active'">
+          <a [attr.data-target]="dataTarget" [attr.data-toggle]="dataToggle" class="nav-link" [routerLink]="['/music']"><img src="/assets/nav/music@2x.png" alt="Music"></a>
+          </li>
+          <li class="nav-item" routerLinkActive="'active'">
+            <a [attr.data-target]="dataTarget" [attr.data-toggle]="dataToggle" class="nav-link" [routerLink]="['/games']"><img src="/assets/nav/games@2x.png"  alt="Games"></a>
+          </li>
+          <li class="nav-item">
+            <a [attr.data-target]="dataTarget" [attr.data-toggle]="dataToggle" class="nav-link" [routerLink]="['/search']"><img src="/assets/nav/search@2x.png" alt="Search"></a>
+          </li>
+       </ul>
+     </div>
+   </div>
+</div>
+</div>
+   <div class="nav-bg">
+
+   </div>
+</nav>

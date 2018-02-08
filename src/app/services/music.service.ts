@@ -3,7 +3,7 @@ import { Http, Headers, Response, RequestOptions} from "@angular/http";
 import { Observable } from "rxjs";
 @Injectable()
 export class MusicService {
-  private url = "http://localhost:3000";
+  private url = "https://geeked-out.herokuapp.com";
   public previewObj:any;
   public albumObj:any;
   constructor(private http: Http){}

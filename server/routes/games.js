@@ -125,8 +125,9 @@ request.get(options, function (err, response, body) {
 
 router.get('/search/:query', function (req, res) {
   let q = req.params.query;
+  let limit = req.params.limit;
   let query = encodeURIComponent(q)
-  
+
   var options = {
     url:'https://igdbcom-internet-game-database-v1.p.mashape.com/games/?search='+query+'&fields=*',
     headers: {

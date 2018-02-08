@@ -31,9 +31,11 @@ router.use(function (req, res, next) {
          })
        }
        token = JSON.parse(body).access_token;
-       //console.log(token)
-    next()
+      //  console.log("token ="+token)
+    next();
+
     })
+
 })
 router.get('/preview/:limit', function (req, res) {
   let limit = req.params.limit;
@@ -79,6 +81,7 @@ router.get('/preview/:limit', function (req, res) {
       });
 
   router.get('/search/:query', function (req, res) {
+     //console.log(token)
     let q = req.params.query;
     let query = encodeURIComponent(q)
        var options = {

@@ -1,47 +1,82 @@
 
-<div class="container-fluid preview containerTop">
+<div class="container-fluid search containerTop">
   <h1>Search</h1>
-  <input (keyup)="searchStr.next($event.target.value)" >
-      <div class="row">
-        <ul *ngIf="movies.length > 0" class="col-md-3">
-          <li *ngFor="let movie of movies">
+  <input (keyup)="searchStr.next($event.target.value)" [ngModel]="returnStr">
+    <app-loading *ngIf="loading" [loadingTitle]='catTitle'></app-loading><!--[@loaderState]="showloader"-->
+      <div class="row marginTop30">
 
-              {{movie.title}}
-
-          </li>
-        </ul>
-        <ul *ngIf="games.length > 0" class="col-md-3">
+        <div *ngIf="movies.length > 0" class="search-cat col-lg-3 col-sm-6">
+          <h3>movies</h3>
+          <ul class="col-12">
+            <li *ngFor="let movie of movies">
+              <a  [routerLink]="['/movie-details', movie.id, searchStr.getValue()]">
+              <div class="row">
+                <div class="col-4 search-img">
+                    <img *ngIf="movie?.poster_path" src="{{config[0]?.base_url}}w92{{movie?.poster_path}}"  alt="Movie Poster">
+                      <img *ngIf="!movie?.poster_path" src="/assets/thumb.png"  alt="Movie Poster">
+                </div>
+                <div class="col-8 search-txt">
+                    <p>{{ movie.title }}</p>
+                </div>
+              </div>
+            </a>
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="games.length > 0" class="search-cat col-lg-3 col-sm-6">
+        <h3>Games</h3>
+        <ul class="col-12" [ngClass]="{bg: useBgG}">
           <li *ngFor="let game of games">
-
-              {{game.name}}
-
+            <a [routerLink]="['/games-details', game?.id, searchStr.getValue()]">
+              <div class="row">
+                <div class="col-4 search-img">
+                  <img *ngIf="game.cover?.cloudinary_id" src="{{game?.cover.cloudinary_id}}"  alt="Game Cover">
+                  <img *ngIf="!game.cover?.cloudinary_id" src="/assets/thumb.png"  alt="Game Cover">
+                </div>
+                <div class="col-8 search-txt">
+                    <p>{{game.name}} </p>
+                </div>
+              </div>
+            </a>
           </li>
         </ul>
-        <ul *ngIf="comics.length > 0" class="col-md-3">
+      </div>
+        <div *ngIf="comics.length > 0" class="search-cat col-lg-3 col-sm-6">
+          <h3>Comics</h3>
+        <ul class="col-12">
           <li *ngFor="let comic of comics">
-
-              {{comic.title}}
+            <a [routerLink]="['/comic-details', comic?.id, searchStr.getValue()]">
+            <div class="row">
+              <div class="col-4 search-img">
+                <img *ngIf="comic.images[0]?.extension" src="{{comic.images[0]?.path}}/portrait_medium.{{comic.images[0]?.extension}}"  alt="Comic Cover">
+                <img *ngIf="!comic.images[0]?.path" src="/assets/thumb.png"  alt="Comic Cover">
+              </div>
+              <div class="col-8 search-txt">
+                  <p>{{ comic.title }}</p>
+              </div>
+            </div>
+          </a>
 
           </li>
         </ul>
-        <ul *ngIf="albums.length > 0" class="col-md-3">
-          <li *ngFor="let album of albums">
-
-              {{album.name}}
-
-          </li>
-        </ul>
-    </div>
-
+        </div>
+        <div *ngIf="albums.length > 0" class="search-cat col-lg-3 col-sm-6">
+          <h3>Music</h3>
+            <ul  class="col-12"  [ngClass]="{bg: useBgM}">
+              <li *ngFor="let album of albums">
+                <a [routerLink]="['/music-details', album?.id, searchStr.getValue()]">
+                <div class="row">
+                  <div class="col-4 search-img">
+                    <img *ngIf="album?.images[2].url" src="{{album?.images[2].url}}"  alt="Album Image">
+                    <img *ngIf="!album?.images[2].url"  src="/assets/thumb.png"  alt="Album Image">
+                  </div>
+                  <div class="col-8 search-txt">
+                      <p>{{album.name}}</p>
+                  </div>
+                </div>
+              </a>
+              </li>
+            </ul>
+        </div>
+      </div>
 </div>
-
-
-
-
-<!-- <ul *ngIf="results">
-  <li *ngFor="let result of results | slice:0:9">
-    <a href="{{ result.latest }}" target="_blank">
-      {{ result.name }}
-    </a>
-  </li>
-</ul> -->

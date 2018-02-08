@@ -1,15 +1,10 @@
 <div class="container-fluid preview" >
-  <app-loading *ngIf="loading"  [loadingTitle]='catTitle'></app-loading>
+  <!-- <app-loading *ngIf="loading"  [loadingTitle]='catTitle'></app-loading> -->
     <h2  [@titleState]="playTitle">Latest Comics</h2>
       <a [routerLink]="['/comics']">
       <div class="row" [@activeState]="isActive">
-
         <div class="col-md-2 col-4" *ngFor="let item of items">
-
-          <img *ngIf="item.images[0]?.path" src="{{item.images[0]?.path}}" [lazyLoad]="item.images[0]?.path" class="img-fluid" alt="">
-            <div *ngIf="!item.images[0]?.path" class="">
-              sadasdsadasdasd
-            </div>
+          <img *ngIf="item.images[0]?.path" src="/assets/defaultImage.png" [lazyLoad]="item.images[0]?.path" class="img-fluid" alt="">
         </div>
 
     </div>

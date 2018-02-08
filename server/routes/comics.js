@@ -93,7 +93,7 @@ router.get('/details/:id', function (req, res, next) {
 
 router.get('/search/:query', function (req, res, next) {
 	let q = req.params.query;
-	let str = q.slice(0, 3)
+	let str = q.slice(0, 5)
 	let query = encodeURIComponent(str)
 
   console.log(query)

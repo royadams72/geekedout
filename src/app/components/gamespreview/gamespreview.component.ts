@@ -23,6 +23,8 @@ export class GamespreviewComponent implements OnInit {
         this.items = this.items.map(data=>{
           if(data.cover.cloudinary_id !== undefined){
               data.cover.cloudinary_id = 'https://images.igdb.com/igdb/image/upload/t_cover_big/'+data.cover.cloudinary_id+'.jpg'
+          }else{
+            data.cover = {cloudinary_id: "/assets/image404@2x.png"}
           }
           return data;
           })

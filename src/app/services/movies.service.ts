@@ -4,7 +4,7 @@ import { ElapsedTimeService } from './elapsed-time.service';
 import { Observable } from "rxjs";
 @Injectable()
 export class MoviesService {
-  private url = "http://localhost:3000";
+  private url = "https://geeked-out.herokuapp.com";
   public preview:Array<any> = [];
   public item:Array <any> = [];
 

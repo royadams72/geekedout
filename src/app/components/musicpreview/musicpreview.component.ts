@@ -19,13 +19,18 @@ export class MusicpreviewComponent implements OnInit {
       this.musicService.getPreview(4).subscribe((data)=>{
         if(data){
           this.items = data.albums.items;
-          
-          setTimeout(()=>{
-            this.loading = false;
-            this.isActive = 'active';
-            this.playTitle = 'opaque';
-
-          }, 300)
+            this.items = this.items.map(data=>{
+              // console.log(data.images[0])
+              if(data.images[0] === undefined || data.images[0].url === ""){
+                data.images[0].url  = "/assets/image404@2x.png";
+                }
+              return data;
+              })
+            setTimeout(()=>{
+              this.loading = false;
+              this.isActive = 'active';
+              this.playTitle = 'opaque';
+              }, 300)
         }
 
       },err => {

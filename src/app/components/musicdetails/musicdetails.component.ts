@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2} from '@angular/core';
 import { MusicService } from '../../services/music.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import {ActiveTrigger, TitleAnim} from '../../animations/preview';
+import {DetailsTrigger, TitleAnim} from '../../animations/preview';
 import 'rxjs';
 @Component({
   selector: 'app-musicdetails',
   templateUrl: './musicdetails.component.html',
   styleUrls: ['./musicdetails.component.css'],
-  animations: [ActiveTrigger, TitleAnim]
+  animations: [DetailsTrigger, TitleAnim]
 })
 export class MusicdetailsComponent implements OnInit {
   public loading: boolean = true;
@@ -15,21 +15,35 @@ export class MusicdetailsComponent implements OnInit {
   public isActive:string = 'inActive';
   public playTitle:string = 'faded';
   public item:Array<any> = [];
-  constructor(private musicService: MusicService, private activatedRoute: ActivatedRoute) { }
+  public url:string;
+  public searchStr:string;
+  @ViewChild ("bgContainer") bgContainer: ElementRef;
+  constructor(private musicService: MusicService,
+              private activatedRoute: ActivatedRoute,
+              private renderer: Renderer2) { }
 
   ngOnInit() {
     this.activatedRoute.params
-    .flatMap((value:Params)=>{
-      return this.musicService.getItem(value['id']);
+    .flatMap((params:Params)=>{
+      this.searchStr = params['searchStr']
+      console.log(this.searchStr);
+
+      return this.musicService.getItem(params['id']);
     })
     .subscribe((data)=>{
-
       this.item.push(data);
-        console.log(this.item)
+      if( this.item[0].images[0] !== undefined ){
+        this.url = this.item[0].images[0].url
+        }else{
+          this.url = '/assets/image404@2x.png';
+        }
+
       setTimeout(()=>{
         this.isActive = 'active';
         this.loading = false;
         this.playTitle = 'opaque';
+
+        this.renderer.setStyle(this.bgContainer.nativeElement, 'background-image', 'url('+this.url+')')
       }, 700)
     })
   }

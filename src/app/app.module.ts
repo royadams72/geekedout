@@ -31,16 +31,14 @@ import { ComicsService } from './services/comics.service';
 import { ElapsedTimeService } from './services/elapsed-time.service';
 import { SearchService } from './services/search.service';
 
-
 import { LoadingComponent } from './components/loading/loading.component';
 import { NavComponent } from './components/nav/nav.component';
 import { SearchComponent } from './components/search/search.component';
-import { PagerComponent } from './components/pagers/pager-movies/pager.component';
 
-//Third party
-import { TruncatePipe } from 'angular2-truncate';
+
+//Third party - utils
+import { TruncatePipe2 } from './utils/truncate.pipe';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
-
 
 
 @NgModule({
@@ -55,13 +53,12 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
     GamespreviewComponent,
     MusicComponent,
     MusicpreviewComponent,
-    TruncatePipe,
+    TruncatePipe2,
     LoadingComponent,
     NavComponent,
     SearchComponent,
     ComicdetailsComponent,
     MoviedetailsComponent,
-    PagerComponent,
     MusicdetailsComponent,
     GamesdetailsComponent
   ],
@@ -72,6 +69,7 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
     BrowserAnimationsModule,
     routing,
     LazyLoadImageModule
+
   ],
   providers: [
      ComicsService,
