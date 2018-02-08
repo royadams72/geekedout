@@ -1,31 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+
 /*@import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.css";*/
-body{
- background-color: #232323;
- color: #fff;
- font-family: Tahoma;
- letter-spacing: 1px;
- font-weight: normal;
- font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
- font-size: .8rem;
 
+body {
+  background-color: #232323;
+  color: #fff;
+  font-family: Tahoma;
+  letter-spacing: 1px;
+  font-weight: normal;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: .8rem;
 }
 
-body a:link, body a:visited, body a:hover, body a:active{
-  color:#fff;
+body a:link, body a:visited, body a:hover, body a:active {
+  color: #fff;
   text-decoration: none;
+}
 
+body a:hover {
+  text-decoration: underline;
 }
-body a:hover{
-text-decoration: underline;
-}
-.bImage{
+
+.bImage {
   position: absolute;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   width: 100%;
-  height:100%;
+  height: 100%;
   z-index: -30;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -35,210 +37,263 @@ text-decoration: underline;
   filter: blur(10px);
 }
 
-h2{
+h2 {}
 
-
-}
-
-h4{
+h4 {
   font-size: 1rem
 }
+
 img.ng-lazyloaded {
-    animation: fadein 1.7s;
+  animation: fadein 1.7s;
 }
 
 @keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-.fade-out{
+
+.fade-out {
   animation: fadein 1.7s;
 }
 
 @keyframes fade {
-    from { opacity: 1; }
-    to   { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
-.body-color{
+
+.body-color {
   color: #fff;
 }
-.hidden{
+
+.hidden {
   display: none;
   visibility: hidden;
 }
+
 /*Buttons*/
-.btn-default{
+
+.btn-default {
   background-color: #999;
 }
-.marginTop5{
-  margin-top: 5px!important;
+
+.marginTop5 {
+  margin-top: 5px !important;
 }
-.marginTop10{
-  margin-top: 10px!important;
+
+.marginTop10 {
+  margin-top: 10px !important;
 }
-.marginTop30{
-  margin-top: 30px!important;
+
+.marginTop30 {
+  margin-top: 30px !important;
 }
-.marginTop40{
-  margin-top: 40px!important;
+
+.marginTop40 {
+  margin-top: 40px !important;
 }
-.marginTop50{
-  margin-top: 50px!important;
+
+.marginTop50 {
+  margin-top: 50px !important;
 }
-.containerTop{
+
+.containerTop {
   margin-top: 100px;
 }
 
-.row{
+.row {
   margin: 0
 }
-.preview img, .games img, .search img, .comics img, .music img,  .movies img{
+
+.preview img, .games img, .search img, .comics img, .music img, .movies img {
   margin: 0 auto;
   width: 100%;
   height: auto;
 }
+
 /*.search img,*/
-.preview{
+
+.preview {
   text-align: center;
 }
 
-.preview [class*='col-'], .games [class*='col-'] , .music [class*='col-'] , .movies [class*='col-'], .comics [class*='col-'] {
-    padding:0;
+.preview [class*='col-'], .games [class*='col-'], .music [class*='col-'], .movies [class*='col-'], .comics [class*='col-'] {
+  padding: 0;
 }
 
 .preview h2 {
-    padding-top: 30px;
+  padding-top: 30px;
 }
-.container-fluid{
+
+.container-fluid {
   padding: 0;
 }
+
 /*NAVBAR*/
 
-.nav-link img{
+.nav-link img {
   width: 50%;
   height: auto;
 }
-.navbar{
+
+.navbar {
   padding: 10px 0;
-  background-color: #232323!important;
+  background-color: #232323 !important;
 }
-.navbar-brand{
-    margin-left: 2rem;
-    width: 70%
+
+.navbar-brand {
+  margin-left: 2rem;
+  width: 70%
 }
-.nav-right-side{
-  width:20%;
+
+.nav-right-side {
+  width: 20%;
   height: inherit;
   display: flex;
   float: right;
 }
-.logo{
-  -ms-transform: scale(.7); /* IE 9 */
-  -webkit-transform: scale(.7); /* Chrome, Safari, Opera */
+
+.logo {
+  -ms-transform: scale(.7);
+  /* IE 9 */
+  -webkit-transform: scale(.7);
+  /* Chrome, Safari, Opera */
   transform: scale(.7);
   position: relative;
-  left:-20%;
+  left: -20%;
 }
+
 .bg-inverse {
-    background-color:transparent;
+  background-color: transparent;
 }
+
 .collapse, .navbar-collapse {
   position: absolute;
   right: 10px;
+  width: auto !important;
+}
 
-  width:auto!important;
-  }
-  .navbar-inverse .navbar-toggler {
-      position: absolute;
-      right: 20px;
-    }
+.navbar-inverse .navbar-toggler {
+  position: absolute;
+  right: 20px;
+}
 
 /**/
 
-.loader{
+.loader {
   width: 50px;
   height: 50px;
   margin: 0 auto;
-  -ms-transform-origin: 50% 50%; /* IE 9 */
-  -webkit-transform-origin: 50% 50%; /* Chrome, Safari, Opera */
+  -ms-transform-origin: 50% 50%;
+  /* IE 9 */
+  -webkit-transform-origin: 50% 50%;
+  /* Chrome, Safari, Opera */
   transform-origin: 50% 50%;
-  -webkit-animation:spin 1s linear infinite;
-  -moz-animation:spin 1s linear infinite;
-  animation:spin 1s linear infinite;
+  -webkit-animation: spin 1s linear infinite;
+  -moz-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
 }
-.loader img{
+
+.loader img {
   width: 100%;
   height: auto;
-  margin-top: 0!important
+  margin-top: 0 !important
 }
-.loader-container{
+
+.loader-container {
   text-align: center;
   height: 600px;
   padding-top: 100px;
   width: 100%
 }
+
 /*PAGES*/
-.games, .comics, .search, .music, .movies{
+
+.games, .comics, .search, .music, .movies {
   /*padding-top: 100px;*/
   height: 100%;
   width: 100%;
   text-align: center;
 }
-.games h2, .comics h2, .search h2, .music h2, .movies h2{
+
+.games h2, .comics h2, .search h2, .music h2, .movies h2 {
   /*padding-top: 100px;*/
   margin-top: 130px;
 }
+
 /*COMICS*/
-.comics h1, .comics h2{
-  color:#F5E653;
+
+.comics h1, .comics h2 {
+  color: #F5E653;
 }
-.comics-color{
-  color:#F5E653;
+
+.comics-color {
+  color: #F5E653;
 }
+
 /*END COMICS*/
 
 /*MOVIES*/
-.movies h1, .movies h2{
-  color:#68C39F;
+
+.movies h1, .movies h2 {
+  color: #68C39F;
 }
-.movies-color{
-  color:#68C39F;
+
+.movies-color {
+  color: #68C39F;
 }
+
 /*END MOVIES*/
 
 /*GAMES*/
-.games h1, .games h2{
-  color:#EB5055;
+
+.games h1, .games h2 {
+  color: #EB5055;
 }
-.games-color{
-  color:#EB5055;
+
+.games-color {
+  color: #EB5055;
 }
+
 /*END GAMES*/
 
 /*MUSIC*/
-.music h1, .music h2{
-  color:#F969D0;
+
+.music h1, .music h2 {
+  color: #F969D0;
 }
 
-.music-color{
-  color:#F969D0;
+.music-color {
+  color: #F969D0;
 }
+
 /*END GAMES*/
 
 /*Details Pages*/
-.comics-details h2, .movies-details h2, .comics-details h2, .games-details h2{
-  margin-top:25px;
+
+.comics-details h2, .movies-details h2, .comics-details h2, .games-details h2 {
+  margin-top: 25px;
 }
-.listTitle , .listText, .ol-text{
+
+.listTitle, .listText, .ol-text {
   color: #fff;
   list-style-type: none;
   font-size: .8rem
 }
-.ol-text{
+
+.ol-text {
   list-style-type: inherit;
   color: #F969D0;
 }
-.btn{
+
+.btn {
   border: 1px solid #fff;
   padding: .5rem 1rem;
   font-size: 1rem;
@@ -248,63 +303,75 @@ img.ng-lazyloaded {
   -o-transition: color 0 ease-in;
   transition: none;
 }
-.movies-details h1,  .movies-details h2{
-  color:#68C39F;
-}
-.movies-details .listTitle{
- color:#68C39F;
- float: left;
-}
-.movies-details a:hover{
-  color:#68C39F;
-  border-color: #68C39F;
-}
-/*Comics*/
-.comics-details h1,  .comics-details h2{
-  color:#F5E653;
+
+.movies-details h1, .movies-details h2 {
+  color: #68C39F;
 }
 
-.comics-details a:hover{
-  color:#F5E653;
-  border-color: #F5E653;
-}
-.comics-details .listTitle{
-  color:#F5E653;
-}
-/*Music*/
-.music-details h1,  .music-details h2{
-  color:#F969D0;
-}
-
-.music-details a:hover{
-  color:#F969D0;
-  border-color: #F969D0;
-}
-.music-details .listTitle{
-  color:#F969D0;
-}
-
-/*Games*/
-.games-details h1,  .games-details h2{
-  color:#EB5055;
-}
-
-.games-details a:hover{
-  color:#EB5055;
-  border-color: #EB5055;
-}
-.games-details .listText{
+.movies-details .listTitle {
+  color: #68C39F;
   float: left;
 }
 
-.games-details .listTitle{
- color:#EB5055;
+.movies-details a:hover {
+  color: #68C39F;
+  border-color: #68C39F;
 }
 
-.details  ul {
-  padding:  0!important
+/*Comics*/
+
+.comics-details h1, .comics-details h2 {
+  color: #F5E653;
 }
-.details{
+
+.comics-details a:hover {
+  color: #F5E653;
+  border-color: #F5E653;
+}
+
+.comics-details .listTitle {
+  color: #F5E653;
+}
+
+/*Music*/
+
+.music-details h1, .music-details h2 {
+  color: #F969D0;
+}
+
+.music-details a:hover {
+  color: #F969D0;
+  border-color: #F969D0;
+}
+
+.music-details .listTitle {
+  color: #F969D0;
+}
+
+/*Games*/
+
+.games-details h1, .games-details h2 {
+  color: #EB5055;
+}
+
+.games-details a:hover {
+  color: #EB5055;
+  border-color: #EB5055;
+}
+
+.games-details .listText {
+  float: left;
+}
+
+.games-details .listTitle {
+  color: #EB5055;
+}
+
+.details ul {
+  padding: 0 !important
+}
+
+.details {
   margin-top: 100px;
 }
 
@@ -317,124 +384,188 @@ img.ng-lazyloaded {
   margin-top: 30px
 }
 
-.details ul, .details ol{
+.details ul, .details ol {
   padding-left: 0;
   margin-bottom: 0rem;
 }
 
-.details p{
+.details p {
   margin-top: .5rem;
   margin-bottom: 0rem;
 }
 
-.price{
+.price {
   text-align: center;
   margin-top: 20px;
 }
 
-.img-container{
-min-height: 340px;
-text-align: right;
+.img-container {
+  min-height: 340px;
+  text-align: right;
 }
 
-.hideUl{
+.hideUl {
   min-height: 150px;
   overflow: hidden;
 }
-.listTitle{
+
+.listTitle {
   color: #ccc;
   list-style-type: none;
   font-size: .8rem
+}
 
+.capitalize {
+  text-transform: capitalize
 }
-.capitalize{
-text-transform:capitalize
-}
+
 /*SEARCH*/
-.search ul{
+
+.search ul {
   list-style: none;
   padding-top: 20px;
   padding-bottom: 20px;
 }
-.search li{
-margin: 10px 0;
 
+.search li {
+  margin: 10px 0;
 }
-.search li p{
+
+.search li p {
   text-align: left
 }
-.search .bg{
+
+.search .bg {
   background-image: url('/assets/transparentBg.png');
 }
- .search-img{
+
+.search-img {
   padding-left: 0;
   text-align: left;
 }
-.search-txt{
- padding-left: 0;
- text-align: left;
+
+.search-txt {
+  padding-left: 0;
+  text-align: left;
 }
-.search .bg a{
-   color:#000!important;
+
+.search .bg a {
+  color: #000 !important;
 }
-.search .loader-container{
+
+.search .loader-container {
   padding-top: 20px;
 }
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
-@media (min-width: 1300px){
-  .search-cat img{
-    width: auto;
-    height: auto;
-  }
-  .search-txt{
-   padding-left: 20px
-  }
-  .logo {
-      left: -15%
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
   }
 }
-@media (max-width: 991px){
-  .search-cat img{
+
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 1300px) {
+  .search-cat img {
     width: auto;
     height: auto;
   }
-  .nav-link img{
+  .search-txt {
+    padding-left: 20px
+  }
+  .logo {
+    left: -15%
+  }
+}
+
+@media (max-width: 991px) {
+  .search-cat img {
+    width: auto;
+    height: auto;
+  }
+  .nav-link img {
     padding-right: 20px;
-    width:60px;
+    width: 60px;
     height: auto;
   }
   .nav-item {
     text-align: right;
-
   }
   .collapse, .navbar-collapse {
-      top:50px;
+    top: 50px;
   }
   .logo {
-      left: -30%
+    left: -30%
   }
 }
-@media (max-width: 770px){
-  .img-container{
-  text-align: center;
+
+@media (max-width: 770px) {
+  .img-container {
+    text-align: center;
   }
   .logo {
-      left: -40%
+    left: -40%
   }
 }
-  @media (max-width: 685px){
-    .search-txt{
-     padding-left: 20px
-    }
-    .logo {
-        width: 200%
-    }
+
+@media (max-width: 685px) {
+  .search-txt {
+    padding-left: 20px
   }
-  @media (max-width: 560px){
-    .search-txt{
-     padding-left: 0;
-    }
+  .logo {
+    width: 200%
   }
+}
+
+@media (max-width: 560px) {
+  .search-txt {
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-toggleable-md .navbar-collapse {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-toggleable-md .navbar-nav {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-toggleable-md .navbar-toggler {
+    display: none;
+  }
+}
+
+.navbar-toggler {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  padding: .25rem .75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background: 0 0;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
