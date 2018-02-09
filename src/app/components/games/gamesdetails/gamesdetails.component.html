@@ -9,7 +9,7 @@
   <div class="row" [@detailsState]="isActive">
 
       <div class="col-md-4 offset-md-1 img-container" style='display:block'>
-        <img *ngIf="url" src="/assets/defaultImage.png" [lazyLoad]="url" class="img-fluid" alt="">
+        <img src="/assets/defaultImage.png" [lazyLoad]="url" class="img-fluid" (onLoad)="myCallbackFunction($event)" alt="">
       </div>
       <div class="col-md-7 text-left">
         <h2 class="text-left">{{item[0]?.name}}</h2>

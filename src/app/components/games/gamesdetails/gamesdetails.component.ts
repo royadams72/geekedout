@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import { GamesService } from '../../services/games.service';
+import { GamesService } from '../../../services/games.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import {DetailsTrigger, TitleAnim} from '../../animations/preview';
-
+import {DetailsTrigger, TitleAnim} from '../../../animations/preview';
 import 'rxjs';
 @Component({
   selector: 'app-gamesdetails',
@@ -39,8 +38,9 @@ export class GamesdetailsComponent implements OnInit {
       if(this.item[0].cover === undefined){
         this.url = '/assets/image404@2x.png'
           }else{
-          this.url = 'https://images.igdb.com/igdb/image/upload/t_cover_big/'+this.item[0].cover.cloudinary_id+'.jpg'
+          this.url = `https://images.igdb.com/igdb/image/upload/t_cover_big/${this.item[0].cover.cloudinary_id}.jpg`
           }
+          console.log(this.url)
         setTimeout(()=>{
           this.isActive = 'active';
           this.loading = false;
@@ -54,5 +54,7 @@ export class GamesdetailsComponent implements OnInit {
       console.log(err)
     })
   }
-
+myCallbackFunction(event){
+  console.log(event)
+}
 }

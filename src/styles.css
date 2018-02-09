@@ -185,6 +185,44 @@ img.ng-lazyloaded {
   right: 20px;
 }
 
+.navbar-toggler {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  padding: .25rem .75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background: 0 0;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  border-color: rgba(255,255,255,.1);
+}
+.navbar-toggler-icon {
+background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+@media (min-width: 992px) {
+  .navbar-toggleable-md .navbar-collapse {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    width: 100%;
+  }
+}
+    /**/
+@media (min-width: 992px) {
+  .navbar-toggleable-md .navbar-nav {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-toggleable-md .navbar-toggler {
+    display: none;
+  }
+}
 /**/
 
 .loader {
@@ -532,40 +570,4 @@ img.ng-lazyloaded {
   .search-txt {
     padding-left: 0;
   }
-}
-
-@media (min-width: 992px) {
-  .navbar-toggleable-md .navbar-collapse {
-    display: -webkit-box !important;
-    display: -ms-flexbox !important;
-    display: flex !important;
-    width: 100%;
-  }
-}
-
-@media (min-width: 992px) {
-  .navbar-toggleable-md .navbar-nav {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media (min-width: 992px) {
-  .navbar-toggleable-md .navbar-toggler {
-    display: none;
-  }
-}
-
-.navbar-toggler {
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  padding: .25rem .75rem;
-  font-size: 1.25rem;
-  line-height: 1;
-  background: 0 0;
-  border: 1px solid transparent;
-  border-radius: .25rem;
 }

@@ -4,34 +4,35 @@ var request = require('request');
 var dateFormat = require('dateformat');
 var date = dateFormat('yyyy-mm-dd');
 var async = require('async');
+const URL = "https://api-2445582011268.apicast.io/"
 require('dotenv').config();
 // objName: 'player_perspectives' objName: ''
 var objName = ['genres', 'player_perspectives', 'game_modes', 'themes'];
 router.get('/getfields', function(req, res, next) {
   // create request objects to loop through
   var requests = [{
-      url: 'https://igdbcom-internet-game-database-v1.p.mashape.com/genres/?fields=name,id',
+      url: URL+'genres/?fields=name,id',
       headers: {
-        'user-key': process.env.X_MASHAPE_KEY,
+        'user-key': process.env.IGDB_APIKEY,
         'Accept': 'application/json'
       }
     }, {
-      url: 'https://igdbcom-internet-game-database-v1.p.mashape.com/player_perspectives/?fields=name',
+      url: URL+'player_perspectives/?fields=name',
       headers: {
-        'user-key': process.env.X_MASHAPE_KEY,
+        'user-key': process.env.IGDB_APIKEY,
         'Accept': 'application/json'
       }
     }, {
-      url: 'https://igdbcom-internet-game-database-v1.p.mashape.com/game_modes/?fields=name',
+      url: URL+'game_modes/?fields=name',
       headers: {
-        'user-key': process.env.X_MASHAPE_KEY,
+        'user-key': process.env.IGDB_APIKEY,
         'Accept': 'application/json'
       }
     },
     {
-      url: 'https://igdbcom-internet-game-database-v1.p.mashape.com/themes/?fields=name',
+      url: URL+'themes/?fields=name',
       headers: {
-        'user-key': process.env.X_MASHAPE_KEY,
+        'user-key': process.env.IGDB_APIKEY,
         'Accept': 'application/json'
       }
     }
@@ -83,9 +84,9 @@ router.get('/getfields', function(req, res, next) {
 router.get('/preview/:limit', function(req, res) {
   let limit = req.params.limit;
   var options = {
-    url: 'https://api-2445582011268.apicast.io/games/?fields=*&order=popularity:desc&filter[release_dates.date][gte]=' + date + '&limit=' + limit,
+    url: URL+'games/?fields=*&order=popularity:desc&filter[release_dates.date][gte]=' + date + '&limit=' + limit,
     headers: {
-      'user-key': process.env.X_MASHAPE_KEY,
+      'user-key': process.env.IGDB_APIKEY,
       'Accept': 'application/json'
     }
   }
@@ -109,9 +110,9 @@ router.get('/preview/:limit', function(req, res) {
 router.get('/getgame/:id', function(req, res) {
   let id = req.params.id;
   var options = {
-    url: 'https://igdbcom-internet-game-database-v1.p.mashape.com/games/' + id + '?fields=*',
+    url: URL+'games/' + id + '?fields=*',
     headers: {
-      'user-key': process.env.X_MASHAPE_KEY,
+      'user-key': process.env.IGDB_APIKEY,
       'Accept': 'application/json'
     }
   }
@@ -136,9 +137,9 @@ router.get('/search/:query', function(req, res) {
   let query = encodeURIComponent(q)
 
   var options = {
-    url: 'https://igdbcom-internet-game-database-v1.p.mashape.com/games/?search=' + query + '&fields=*',
+    url: URL+'games/?search=' + query + '&fields=*',
     headers: {
-      'user-key': process.env.X_MASHAPE_KEY,
+      'user-key': process.env.IGDB_APIKEY,
       'Accept': 'application/json'
     }
   }

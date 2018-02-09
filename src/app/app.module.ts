@@ -16,9 +16,9 @@ import { MoviesComponent } from './components/movies/movies.component';
 import { MoviespreviewComponent } from './components/moviespreview/moviespreview.component';
 import { MoviedetailsComponent } from './components/moviedetails/moviedetails.component';
 
-import { GamesComponent } from './components/games/games.component';
-import { GamespreviewComponent } from './components/gamespreview/gamespreview.component';
-import { GamesdetailsComponent } from './components/gamesdetails/gamesdetails.component';
+import { GamesComponent, GamespreviewComponent, GamesdetailsComponent } from './components/games/';
+import {  } from './components/gamespreview/gamespreview.component';
+import {  } from './components/gamesdetails/gamesdetails.component';
 
 import { MusicdetailsComponent } from './components/musicdetails/musicdetails.component';
 import { MusicComponent } from './components/music/music.component';

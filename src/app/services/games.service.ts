@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from "@angular/http";
-import { ElapsedTimeService } from './elapsed-time.service';
 import { Observable } from "rxjs";
 import 'rxjs';
+import { ElapsedTimeService } from './elapsed-time.service';
+import { APPCONFIG } from '../app.config';
 @Injectable()
 export class GamesService {
 
-  private url = "http://localhost:3000"//"https://geeked-out.herokuapp.com";
+  private url = APPCONFIG.URL//"https://geeked-out.herokuapp.com";
   public items: Array<any> = [];
   public item: Array<any> = [];
   public enumElements = [['genres'], ['player_perspectives'], ['game_modes'], ['themes']]//elements that are returned from API as numbers
@@ -28,7 +29,7 @@ export class GamesService {
       .map((data) => {
         let result = data.json().data;
         this.items = result;
-        console.log(this.items)
+        // console.log(this.items)
         return this.items;
       })
       .catch((error) => {
@@ -53,7 +54,7 @@ export class GamesService {
         })
     }
     else {
-      console.log("EnumList already set")
+      // console.log("EnumList already set")
 
       return this.getInfo(id);
     }
@@ -95,7 +96,7 @@ export class GamesService {
         return true;
       })
       .map(arr => {
-        console.log(this.enumElements)
+        // console.log(this.enumElements)
         // console.log(this.items[0][arr[0]])
         return arr.concat(this.items[0][arr[0]])
       })
@@ -117,7 +118,7 @@ export class GamesService {
     this.cleanUpArray(this.enumElements);
   }
   public getList() {
-    console.log(this.enumElements)
+    // console.log(this.enumElements)
     return this.enumElements
   }
   public cleanUpArray(arr) {

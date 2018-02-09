@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GamesService } from '../../services/games.service';
-import { ActiveTrigger, TitleAnim, LoaderAnim } from '../../animations/preview';
+import { GamesService } from '../../../services/games.service';
+import { ActiveTrigger, TitleAnim, LoaderAnim } from '../../../animations/preview';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs';
 @Component({

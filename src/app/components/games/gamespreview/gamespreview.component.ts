@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { GamesService } from '../../services/games.service';
-import {ActiveTrigger, TitleAnim} from '../../animations/preview';
+import { GamesService } from '../../../services/games.service';
+import {ActiveTrigger, TitleAnim} from '../../../animations/preview';
 import { AnimationEvent } from '@angular/animations';
-import { LazyLoadImageModule } from 'ng-lazyload-image';
+// import { LazyLoadImageModule } from 'ng-lazyload-image';
 @Component({
   selector: 'app-gamespreview',
   templateUrl: './gamespreview.component.html',
