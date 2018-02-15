@@ -40,7 +40,6 @@ export class GamesdetailsComponent implements OnInit {
           }else{
           this.url = `https://images.igdb.com/igdb/image/upload/t_cover_big/${this.item[0].cover.cloudinary_id}.jpg`
           }
-          console.log(this.url)
         setTimeout(()=>{
           this.isActive = 'active';
           this.loading = false;

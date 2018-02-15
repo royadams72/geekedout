@@ -64,6 +64,7 @@ public showloader:string = 'faded';
     }
 
    public handleGames(arr){
+     console.log(arr)
      this.games = arr;
      this.games = this.games.map(data=>{
        if(data.cover != undefined){

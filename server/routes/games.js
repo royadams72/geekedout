@@ -4,7 +4,9 @@ var request = require('request');
 var dateFormat = require('dateformat');
 var date = dateFormat('yyyy-mm-dd');
 var async = require('async');
-const URL = "https://api-2445582011268.apicast.io/"
+// const igdb = require('igdb-api-node');
+// const client = igdb(process.env.IGDB_APIKEY);
+const URL = "https://api-endpoint.igdb.com/"
 require('dotenv').config();
 // objName: 'player_perspectives' objName: ''
 var objName = ['genres', 'player_perspectives', 'game_modes', 'themes'];
@@ -136,6 +138,8 @@ router.get('/search/:query', function(req, res) {
   let limit = req.params.limit;
   let query = encodeURIComponent(q)
 
+
+
   var options = {
     url: URL+'games/?search=' + query + '&fields=*',
     headers: {
@@ -143,7 +147,7 @@ router.get('/search/:query', function(req, res) {
       'Accept': 'application/json'
     }
   }
-
+  console.log(options)
   request.get(options, function(err, response, body) {
     if (err) {
       return res.status(500).json({
@@ -151,6 +155,7 @@ router.get('/search/:query', function(req, res) {
         error: err
       })
     }
+
     res.json({
       data: JSON.parse(body)
     });

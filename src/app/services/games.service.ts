@@ -40,6 +40,7 @@ export class GamesService {
 
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
+    console.log(options)
     //If 2 days have past, or LS not set, get info from API in regards to enumurated fields
     //And put into localStorage - setNumbers
     if (!this.elapsedTime.isInfoSet('enumList')) {

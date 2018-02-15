@@ -8,21 +8,12 @@ import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 
-import { ComicsComponent } from './components/comics/comics.component';
-import { ComicspreviewComponent } from './components/comicspreview/comicspreview.component';
-import { ComicdetailsComponent } from './components/comicdetails/comicdetails.component';
-
-import { MoviesComponent } from './components/movies/movies.component';
-import { MoviespreviewComponent } from './components/moviespreview/moviespreview.component';
-import { MoviedetailsComponent } from './components/moviedetails/moviedetails.component';
-
+import { ComicsComponent, ComicspreviewComponent, ComicdetailsComponent } from './components/comics/';
+import { MoviesComponent, MoviedetailsComponent, MoviespreviewComponent} from './components/movies/';
 import { GamesComponent, GamespreviewComponent, GamesdetailsComponent } from './components/games/';
-import {  } from './components/gamespreview/gamespreview.component';
-import {  } from './components/gamesdetails/gamesdetails.component';
 
-import { MusicdetailsComponent } from './components/musicdetails/musicdetails.component';
-import { MusicComponent } from './components/music/music.component';
-import { MusicpreviewComponent } from './components/musicpreview/musicpreview.component';
+import { MusicdetailsComponent, MusicComponent, MusicpreviewComponent } from './components/music/';
+
 //Services
 import { MusicService } from './services/music.service';
 import { GamesService } from './services/games.service';

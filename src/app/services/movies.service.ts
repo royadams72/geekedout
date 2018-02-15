@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions} from "@angular/http";
 import { ElapsedTimeService } from './elapsed-time.service';
 import { Observable } from "rxjs";
+import { APPCONFIG } from '../app.config';
 @Injectable()
 export class MoviesService {
-  private url = "https://geeked-out.herokuapp.com";
+  private url = APPCONFIG.URL;
   public preview:Array<any> = [];
   public item:Array <any> = [];
 

@@ -5,11 +5,12 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+import { APPCONFIG } from '../app.config';
 // import 'rxjs/add/operator/switchMap';
 
 @Injectable()
 export class SearchService {
-  private url = "https://geeked-out.herokuapp.com";
+  private url = APPCONFIG.URL;
   private searchResults:Array<any> = [];
   constructor(private http: Http) { }
 
@@ -64,7 +65,7 @@ public callSearches(query){
            .map((data) => {
               let result;
                   result = data.json().data;
-                  // console.log('games')
+                  console.log(result)
                   return result;
               })
           .catch((error) => {

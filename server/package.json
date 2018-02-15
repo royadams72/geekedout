@@ -10,17 +10,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.6.0",
     "base-64": "^0.1.0",
     "body-parser": "^1.17.1",
-    "currency-conversion": "^0.2.4",
-    "currency-converter": "^0.1.12",
     "dateformat": "^2.0.0",
     "dotenv": "^4.0.0",
     "express": "^4.15.2",
-    "google-currency": "^1.0.4",
+    "igdb-api-node": "^3.1.2",
     "js-md5": "^0.4.2",
     "money": "^0.2.0",
     "node-localstorage": "^1.3.0",
+    "nodejs-currency-converter": "^1.0.1",
     "request": "^2.81.0"
   }
 }

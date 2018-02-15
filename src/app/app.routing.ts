@@ -1,13 +1,9 @@
 import {ModuleWithProviders} from "@angular/core";
 import {Routes, RouterModule} from "@angular/router";
-
-import {MoviesComponent} from './components/movies/movies.component';
-import {MoviedetailsComponent} from './components/moviedetails/moviedetails.component';
-import {ComicsComponent} from './components/comics/comics.component';
-import {ComicdetailsComponent} from './components/comicdetails/comicdetails.component';
+import {MoviesComponent, MoviedetailsComponent} from './components/movies/';
+import {ComicsComponent, ComicdetailsComponent} from './components/comics/';
 import { GamesComponent, GamesdetailsComponent } from './components/games/';
-import {MusicComponent} from './components/music/music.component';
-import {MusicdetailsComponent} from './components/musicdetails/musicdetails.component';
+import {MusicComponent, MusicdetailsComponent} from './components/music/';
 import {SearchComponent} from './components/search/search.component';
 import {HomeComponent} from './components/home/home.component';
 

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions} from "@angular/http";
 import { Observable } from "rxjs";
+import { APPCONFIG } from '../app.config';
 @Injectable()
 export class MusicService {
-  private url = "https://geeked-out.herokuapp.com";
+  private url = APPCONFIG.URL;
   public previewObj:any;
   public albumObj:any;
   constructor(private http: Http){}
