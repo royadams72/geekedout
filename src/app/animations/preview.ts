@@ -32,19 +32,19 @@ export const DetailsTrigger = trigger('detailsState', [
   ])
 ]);
 export const TitleAnim = trigger('titleState', [
-  state('faded', style({
+  state('false', style({
     'opacity': '0'
   })),
-  state('opaque', style({
+  state('true', style({
     'opacity': '1'
   })),
-  transition('faded <=> opaque', [
+  transition('false <=> true', [
     animate('700ms ease-out')
   ])
 ]);
 
 export const LoaderAnim = trigger('loaderState', [
-  state('faded', style({
+  state('false', style({
     'position': 'absolute',
     'top': '100px',
     'left':'0',
@@ -53,7 +53,7 @@ export const LoaderAnim = trigger('loaderState', [
     'opacity': '0',
     'display': 'none'
   })),
-  state('opaque', style({
+  state('true', style({
     'position': 'absolute',
     'top': '100px',
     'left':'0',
@@ -62,7 +62,7 @@ export const LoaderAnim = trigger('loaderState', [
     'opacity': '1',
     'display': 'block'
   })),
-  transition('faded <=> opaque', [
+  transition('false <=> true', [
     animate('700ms ease-out')
   ])
 ]);

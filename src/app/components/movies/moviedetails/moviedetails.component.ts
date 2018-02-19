@@ -18,20 +18,33 @@ export class MoviedetailsComponent implements OnInit {
   public config:Array<any> = [];
   public url:string;
   public searchStr:string;
+  public pageNum: number;
+  public query:{};
   @ViewChild ("bgContainer") bgContainer: ElementRef;
   constructor(private moviesService: MoviesService,
               private activatedRoute: ActivatedRoute,
               private renderer: Renderer2) { }
 
   ngOnInit() {
-    this.activatedRoute.params
-    .flatMap((params:Params)=>{
-      this.searchStr = params['searchStr']
-      return this.moviesService.getMovie(params['id']);
+    //Used optional parameters, not using pagination at the momnent
+    //But wanted to have something in place for when I do
+    //Without having to hardcode essential route params, in to the app.routing class
+    this.activatedRoute.queryParams
+    .switchMap((query)=>{
+      //Use switchMap to get query details returned
+      //And update the query object with the the search or page number
+      //This is for back button
+      this.searchStr = query.searchStr;
+      if (query.searchStr !== undefined){
+        this.query = { searchStr: query.searchStr }
+      }else{
+        this.query = { pageNum: query.pageNum }
+      }
+      return this.moviesService.getMovies(query.id);
     })
     .subscribe((data)=>{
       this.config.push(JSON.parse(localStorage.getItem('configuration')));
-      console.log(this.config)
+      // console.log(this.config)
       this.item = data;
       if(this.item[0].poster_path !== undefined){
         this.url = this.config[0].base_url+'/w500/'+this.item[0].poster_path

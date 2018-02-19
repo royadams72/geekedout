@@ -9,8 +9,8 @@ import {HomeComponent} from './components/home/home.component';
 
 const appRoutes: Routes = [
    {path: "movies", component: MoviesComponent},
-   {path: "movie-details/:id", component: MoviedetailsComponent},
-   {path: "movie-details/:id/:searchStr", component: MoviedetailsComponent},
+   {path: "movie-details", component: MoviedetailsComponent},
+   // {path: "movie-details/:id/:searchStr", component: MoviedetailsComponent},
    {path: "comics", component: ComicsComponent},
    {path: "comic-details/:id", component: ComicdetailsComponent},
    {path: "comic-details/:id/:searchStr", component: ComicdetailsComponent},
@@ -21,7 +21,7 @@ const appRoutes: Routes = [
     {path: "games-details/:id", component: GamesdetailsComponent},
    {path: "games-details/:id/:searchStr", component: GamesdetailsComponent},
    {path: "search", component: SearchComponent},
-   {path: "search/:searchStr", component: SearchComponent},
+   // {path: "search/:searchStr", component: SearchComponent},
    {path: "", component: HomeComponent},
    {path: "**", component: HomeComponent},
 ]

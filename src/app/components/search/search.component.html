@@ -9,7 +9,7 @@
           <h3>movies</h3>
           <ul class="col-12">
             <li *ngFor="let movie of movies">
-              <a  [routerLink]="['/movie-details', movie.id, searchStr.getValue()]">
+              <a  [routerLink]="['/movie-details']" [queryParams]="{id:movie.id, searchStr:searchStr.getValue()}">
               <div class="row">
                 <div class="col-4 search-img">
                     <img *ngIf="movie?.poster_path" src="{{config[0]?.base_url}}w92{{movie?.poster_path}}"  alt="Movie Poster">

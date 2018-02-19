@@ -11,9 +11,9 @@ import { HomeComponent } from './components/home/home.component';
 import { ComicsComponent, ComicspreviewComponent, ComicdetailsComponent } from './components/comics/';
 import { MoviesComponent, MoviedetailsComponent, MoviespreviewComponent} from './components/movies/';
 import { GamesComponent, GamespreviewComponent, GamesdetailsComponent } from './components/games/';
-
 import { MusicdetailsComponent, MusicComponent, MusicpreviewComponent } from './components/music/';
 
+import { CategoryComponent } from './components/category/category-component';
 //Services
 import { MusicService } from './services/music.service';
 import { GamesService } from './services/games.service';
@@ -51,7 +51,8 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
     ComicdetailsComponent,
     MoviedetailsComponent,
     MusicdetailsComponent,
-    GamesdetailsComponent
+    GamesdetailsComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

@@ -13,40 +13,35 @@ import {ActiveTrigger, TitleAnim, LoaderAnim} from '../../../animations/preview'
 })
 export class ComicsComponent implements OnInit {
 
-  public items:Array<any> = [];
+  public items:Array<any> = [{}];
   public loading: boolean = true;
-  public catTitle = 'Loading Comics content';
-  public isActive:string = 'inActive';
-  public playTitle:string = 'faded';
-  public showloader:string = 'opaque';
-
+  public loadingMsg: string = "Loading Comics";
+  public catTitle:string = "Latest Comics";
+  public link:string = "/comic-details"
+  public colClass: string = "col-md-2 col-4";
+  // "col-md-2 col-4"
     constructor(private comicsService: ComicsService,
                 private activatedRoute: ActivatedRoute,
                 private router: Router) {}
 
     ngOnInit(){
       this.activatedRoute.params
-      .switchMap(()=>{
+      .flatMap(()=>{
         // console.log(params)
+        //Get params incase we need to paginate
         return this.comicsService.getPreview(50)
       })
       .subscribe((data)=>{
         this.items = data[0].results;
-        this.items = this.items.map(arr=>{
-          if(arr.images[0] !== undefined){
-            arr.images[0].path = arr.images[0].path+"/standard_fantastic.jpg";
+        this.items = this.items.map(data=>{
+          data.link = this.link
+          if(data.images[0] !== undefined){
+            data.img = data.images[0].path+"/standard_fantastic.jpg";
           }else{
-              arr.images[0].path = "assets/image404@2x.png";
+              data.img = "assets/image404@2x.png";
           }
-          return arr;
+          return data;
           })
-        setTimeout(()=>{
-          this.isActive = 'active';
-          this.loading = false;
-          this.playTitle = 'opaque';
-          this.showloader = 'faded';
-          // console.log(this.showloader, this.playTitle)
-        }, 300);
       },err => {
         this.loading = false;
         console.log(err)

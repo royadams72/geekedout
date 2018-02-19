@@ -10,18 +10,19 @@ import 'rxjs';
   animations: [ActiveTrigger, TitleAnim, LoaderAnim]
 })
 export class GamesComponent implements OnInit {
-  public catTitle = 'Loading Games content';
   public loading: boolean = true;
   public items: Array<any> = [];
-  public isActive: string = 'inActive';
-  public playTitle: string = 'faded';
-  public showloader: string = 'opaque';
+  public loadingMsg: string = "Loading Games";
+  public catTitle:string = "Latest Games";
+  public link:string = "/games-details"
+  public colClass: string = "col-md-2 col-6";
   constructor(private gamesService: GamesService,
     private activatedRoute: ActivatedRoute) { }
   ngOnInit() {
-    this.activatedRoute.params
-      .flatMap((params: Params) => {
-        console.log(params)
+    this.activatedRoute.url
+      .flatMap((data) => {
+        // this.activatedRoute.url.subscribe((data)=>console.log(data))
+        console.log(data[0].path)
         return this.gamesService.getItems(50)
       })
       .subscribe((data) => {
@@ -30,22 +31,17 @@ export class GamesComponent implements OnInit {
 
           this.items = data;
           this.items = this.items.map(data => {
-            // console.log(data.cover)
+          data.link = this.link;
             if (data.cover != undefined) {
-              data.cover.cloudinary_id = 'https://images.igdb.com/igdb/image/upload/t_cover_big/' + data.cover.cloudinary_id + '.jpg'
+              data.img = 'https://images.igdb.com/igdb/image/upload/t_cover_big/' + data.cover.cloudinary_id + '.jpg'
 
             } else {
-              data.cover = { cloudinary_id: "/assets/image404@2x.png" }
+              data.img = "/assets/image404@2x.png";
             }
             return data;
           })
         }
-        setTimeout(() => {
-          this.isActive = 'active';
-          this.loading = false;
-          this.playTitle = 'opaque';
-          this.showloader = 'faded';
-        }, 300)
+
 
         //  console.log(data)
       }, err => {

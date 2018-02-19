@@ -11,10 +11,10 @@ import { AnimationEvent } from '@angular/animations';
 })
 export class GamespreviewComponent implements OnInit {
   public catTitle = 'Loading Games content';
-  public loading: boolean = true;
   public items:Array<any> = [];
+  public loading:boolean = true;
   public isActive:string = 'inActive';
-  public playTitle:string = 'faded';
+  public showTitle:string = 'false';
     constructor(private gamesService: GamesService) { }
 
     ngOnInit(){
@@ -31,10 +31,10 @@ export class GamespreviewComponent implements OnInit {
         setTimeout(()=>{
           this.loading = false;
           this.isActive = 'active';
-          this.playTitle = 'opaque';
+          this.showTitle = 'true';
         }, 400)
       },err => {
-        this.loading = false;
+
         console.log(err)
       })
     }

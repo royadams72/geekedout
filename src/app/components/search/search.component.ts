@@ -28,7 +28,8 @@ public loading:boolean;
 public showloader:string = 'faded';
   constructor(private searchService: SearchService, private route: ActivatedRoute) {
     //*If returning from detail page*//
-    let str = this.route.snapshot.params['searchStr'];
+    let str = this.route.snapshot.queryParams.searchStr;
+    console.log(this.route.snapshot.queryParams.searchStr)
     if(str !== undefined){
       this.returnStr = str;
       this.searchStr.next(str)

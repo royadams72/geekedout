@@ -1,11 +1,1 @@
-<div class="container-fluid movies" >
-<app-loading [@loaderState]="showloader" [loadingTitle]='catTitle'></app-loading><!--  -->
-<h2 [@titleState]="playTitle">Movies in Cinemas Now</h2>
-      <div class="row">
-        <div class="col-md-3 col-sm-6 item" *ngFor="let item of items">
-          <a [routerLink]="['/movie-details', item.id]">
-          <img *ngIf="item?.img" class="img-fluid" src="/assets/defaultImage.png" [lazyLoad]="item?.img">
-          </a>
-        </div>
-    </div>
-</div>
+<app-category [props]="props"></app-category>

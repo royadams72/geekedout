@@ -14,7 +14,7 @@ export class MoviesService {
     this.elapsedTime.setDay();
   }
 
-public getMovie(action, pageNum?:number): Observable<any>{
+public getMovies(action, pageNum?:number): Observable<any>{
     //Gets movie configuration from server first, if not done so, for 2 diffDays
     //Then loads multiple movie function or movie details
   let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -57,9 +57,9 @@ public getMovie(action, pageNum?:number): Observable<any>{
                  }else{
                     result = data.json().data;
                  }
-                   this.preview = result;
-                    //console.log(this.preview)
-                    return this.preview;
+                   // this.preview = result;
+                    console.log(result)
+                    return result;
                 })
             .catch((error) => {
           return Observable.throw(error)

@@ -2,8 +2,8 @@
   <app-loading *ngIf="loading"  [loadingTitle]='catTitle'></app-loading>
   <div class="row">
     <div *ngIf="!loading" class="col-md-12">
-      <a *ngIf="searchStr === undefined" class="btn" [routerLink]="['/movies']"><< Back to Movies</a>
-      <a *ngIf="searchStr !== undefined" class="btn" [routerLink]="['/search', searchStr]"><< Back to Search Results</a>
+      <a *ngIf="searchStr === undefined" class="btn" [routerLink]="['/movies']" [queryParams]="query"><< Back to Movies</a>
+      <a *ngIf="searchStr !== undefined" class="btn" [routerLink]="['/search']" [queryParams]="query"><< Back to Search Results</a>
     </div>
   </div>
   <div class="row" [@detailsState]="isActive">
