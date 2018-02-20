@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { ComicsComponent, ComicspreviewComponent, ComicdetailsComponent } from './components/comics/';
-import { MoviesComponent, MoviedetailsComponent, MoviespreviewComponent} from './components/movies/';
+import { MoviesComponent, MoviedetailsComponent } from './components/movies/';
 import { GamesComponent, GamespreviewComponent, GamesdetailsComponent } from './components/games/';
 import { MusicdetailsComponent, MusicComponent, MusicpreviewComponent } from './components/music/';
 
@@ -39,7 +39,6 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
     ComicsComponent,
     ComicspreviewComponent,
     MoviesComponent,
-    MoviespreviewComponent,
     GamesComponent,
     GamespreviewComponent,
     MusicComponent,

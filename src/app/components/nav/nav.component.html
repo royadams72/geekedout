@@ -17,7 +17,7 @@
      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
        <ul class="navbar-nav mr-auto">
          <li class="nav-item" routerLinkActive="'active'">
-           <a [attr.data-target]="dataTarget" [attr.data-toggle]="dataToggle" class="nav-link" [routerLink]="['/movies']"><img src="/assets/nav/movies@2x.png"  alt="Movies"></a>
+           <a [attr.data-target]="dataTarget" [attr.data-toggle]="dataToggle" class="nav-link" [routerLink]="['/movies']" [queryParams]="{pageNum:1}"><img src="/assets/nav/movies@2x.png"  alt="Movies"></a>
          </li>
          <li class="nav-item" routerLinkActive="'active'">
            <a [attr.data-target]="dataTarget" [attr.data-toggle]="dataToggle" class="nav-link" [routerLink]="['/comics']"><img src="/assets/nav/comics@2x.png"  alt="Comics"></a>

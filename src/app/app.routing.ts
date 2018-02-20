@@ -10,7 +10,6 @@ import {HomeComponent} from './components/home/home.component';
 const appRoutes: Routes = [
    {path: "movies", component: MoviesComponent},
    {path: "movie-details", component: MoviedetailsComponent},
-   // {path: "movie-details/:id/:searchStr", component: MoviedetailsComponent},
    {path: "comics", component: ComicsComponent},
    {path: "comic-details/:id", component: ComicdetailsComponent},
    {path: "comic-details/:id/:searchStr", component: ComicdetailsComponent},

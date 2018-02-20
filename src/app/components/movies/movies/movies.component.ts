@@ -20,7 +20,7 @@ export class MoviesComponent implements OnInit {
   public loadingMsg: string = "Loading Movies";
   public catTitle:string = "Movies in Cinemas Now";
   public link:string;
-  public pageNum: number;
+  public pageNum: number = 1;
   private state: string = 'preview';//Is used to toggle vars in this class, also a param, for getMovies, in service
   public colClass: string = "col-md-3 col-sm-6";
   constructor(private activatedRoute: ActivatedRoute,
@@ -38,9 +38,7 @@ export class MoviesComponent implements OnInit {
     //Else set state to showAll and get the
     //pageNum from the pageNum in the query
     .switchMap((query)=>{
-      if (isEmpty(query)){
-        this.pageNum = 1;
-      }else{
+      if (!isEmpty(query)){
         this.state = 'showAll'
         this.pageNum = +query.pageNum;
       }
@@ -67,7 +65,7 @@ export class MoviesComponent implements OnInit {
           data.query = { pageNum:this.pageNum, id:data.id };
         }else{
           data.link = '/movies';
-          data.query = { pageNum:this.pageNum};
+          data.query = { pageNum:this.pageNum };
         }
           // console.log(data.id)
             if(data.poster_path !== undefined){
@@ -77,6 +75,7 @@ export class MoviesComponent implements OnInit {
               }
             return data;
             })
+            //Populate the props object, for the app-category component selector
             this.props = {
               items: this.items,
               catTitle: this.catTitle,
