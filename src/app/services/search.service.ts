@@ -27,7 +27,7 @@ export class SearchService {
 public callSearches(query){
     return Observable.forkJoin([
         this.searchMovies(query),
-        this.searchGames(query),
+        // this.searchGames(query),
         this.searchComics(query),
         this.searchMusic(query)
     ])

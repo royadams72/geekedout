@@ -1,4 +1,4 @@
 export const APPCONFIG = {
-URL:  "https://geeked-out.herokuapp.com"//http://localhost:3000
-
+URL:  'https://geeked-out.herokuapp.com',
+LOCAL_URL: 'http://localhost:3000'
 }
