@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "async": "^2.6.0",
+    "async": "^2.6.4",
     "base-64": "^0.1.0",
     "body-parser": "^1.17.1",
     "dateformat": "^2.0.0",
